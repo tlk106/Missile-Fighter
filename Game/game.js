@@ -1,6 +1,21 @@
 let playerX = 234;
-let playerY = 129;
+let playerY = 400;
+const playerSpeed = 5;
 
-const playerPos = [playerX, playerY];
+const updatePlayerPosition = () => {
+  console.log(`Player Position: (${playerX}, ${playerY})`);
+  return [playerX, playerY]; // Return the updated position
+}
 
-export { playerPos };
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft') {
+      playerX -= playerSpeed;
+  } else if (event.key === 'ArrowRight') {
+      playerX += playerSpeed;
+  }
+  updatePlayerPosition();
+});
+
+updatePlayerPosition();
+
+export { updatePlayerPosition };

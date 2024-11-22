@@ -39,3 +39,8 @@ const play = () => {
   hideOrShowElementByID("menu-container");
   hideOrShowElementByID("game-area");
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  showElementByID("menu-container");
+  hideElementByID("game-area");
+});
