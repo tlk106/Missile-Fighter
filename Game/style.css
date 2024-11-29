@@ -1,0 +1,7 @@
+#game-ui {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
