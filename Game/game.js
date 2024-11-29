@@ -1,21 +1,25 @@
 let playerX = 234;
 let playerY = 400;
 const playerSpeed = 5;
+const keys = {};
 
 const updatePlayerPosition = () => {
-  console.log(`Player Position: (${playerX}, ${playerY})`);
-  return [playerX, playerY]; // Return the updated position
-}
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowLeft') {
+  if (keys["a"]) {
       playerX -= playerSpeed;
-  } else if (event.key === 'ArrowRight') {
+  }
+  if (keys["d"]) {
       playerX += playerSpeed;
   }
-  updatePlayerPosition();
-});
+  console.log(`Player Position: (${playerX}, ${playerY})`);
+  return [playerX, playerY];
+}
 
-updatePlayerPosition();
+const handleKeyPress = (event) => {
+  if (event.type === "keydown") {
+    keys[event.key] = true;
+  } else if (event.type === "keyup") {
+    keys[event.key] = false;
+  }
+};
 
-export { updatePlayerPosition };
+export { updatePlayerPosition, handleKeyPress };
