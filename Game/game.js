@@ -1,11 +1,14 @@
 let playerX = 234;
-let playerY = 400;
+let playerY = 390;
 const playerSpeed = 5;
 const playerBulletSpeed = 10;
-const keys = {};
+const keys = {}; 
 const bullets = []; // Initialize bullets as an array
+let canShoot = true; // Change to let for mutability
+const bulletCooldown = 250; // Cooldown in milliseconds
 
 const createPlayerBullet = (playerX) => {
+  if (!canShoot) return;
   const bullet = {
     x: playerX,
     y: playerY,
@@ -13,6 +16,11 @@ const createPlayerBullet = (playerX) => {
   };
   bullets.push(bullet);
   console.log("Bullet Created");
+  canShoot = false;
+
+  setTimeout(() => {
+    canShoot = true; // Reset shooting ability after cooldown
+  }, bulletCooldown);
 };
 
 const updateBullets = () => {
