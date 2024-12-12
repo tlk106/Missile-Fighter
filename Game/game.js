@@ -26,7 +26,7 @@ const checkBulletMissileCollisions = () => {
     for (let j = missiles.length - 1; j >= 0; j--) {
       const bullet = bullets[i];
       const missile = missiles[j];
-      const collisionRadius = 30;
+      const collisionRadius = 26;
 
       if (checkcollision(bullet.x, bullet.y, missile.x, missile.y, collisionRadius)) {
         console.log("Collision detected between bullet and missile!");
