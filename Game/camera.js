@@ -15,7 +15,7 @@ const render = () => {
   const [playerX, playerY] = updatePlayerPosition();
   
   // Draw the player
-  drawCircle(playerX, playerY, 10, "black");
+  drawCircle(playerX, playerY, 15, "black");
 
   // Draw each bullet
   bullets.forEach(bullet => {
@@ -24,7 +24,7 @@ const render = () => {
 
   // Draw the missiles.
   missiles.forEach(missile => {
-    drawCircle(missile.x, missile.y, 5, "red"); // Draw missiles as red circles
+    drawCircle(missile.x, missile.y, 18, "red"); // Draw missiles as red circles
   });
 };
 

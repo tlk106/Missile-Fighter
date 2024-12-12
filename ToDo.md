@@ -5,8 +5,8 @@
 - [X] Player Movement
 - [X] Bullets
 - [X] Missiles
-- [ ] Missile Deletion
-- [ ] Score
+- [X] Missile Deletion
+- [ ] Score (In Progress)
 - [ ] Game Over
 - [ ] Website
 - [ ] Change Log

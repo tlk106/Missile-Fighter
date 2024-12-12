@@ -1,5 +1,5 @@
 let playerX = 234;
-let playerY = 390;
+let playerY = 1190;
 const playerSpeed = 5;
 const playerBulletSpeed = 10;
 const keys = {}; 
@@ -14,10 +14,34 @@ const chooseRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const checkcollision = (x1, y1, x2, y2, checkradius) => {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  return distance <= checkradius;
+};
+
+const checkBulletMissileCollisions = () => {
+  for (let i = bullets.length - 1; i >= 0; i--) {
+    for (let j = missiles.length - 1; j >= 0; j--) {
+      const bullet = bullets[i];
+      const missile = missiles[j];
+      const collisionRadius = 30;
+
+      if (checkcollision(bullet.x, bullet.y, missile.x, missile.y, collisionRadius)) {
+        console.log("Collision detected between bullet and missile!");
+        bullets.splice(i, 1);
+        missiles.splice(j, 1);
+        break;
+      }
+    }
+  }
+};
+
 const createMissile = () => {
   if (!canMissileSpawn) return;
   const missile = {
-    x: chooseRandomNumber(0, 1000),
+    x: chooseRandomNumber(0, 2200),
     y: 0,
     speed: 6,
   };
@@ -96,6 +120,7 @@ const gameLoop = () => {
   updatePlayerPosition();
   updateBullets();
   updateMissiles();
+  checkBulletMissileCollisions(); // Check for collisions in the game loop
   createMissile();
   requestAnimationFrame(gameLoop);
 };
