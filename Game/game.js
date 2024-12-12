@@ -4,8 +4,40 @@ const playerSpeed = 5;
 const playerBulletSpeed = 10;
 const keys = {}; 
 const bullets = []; // Initialize bullets as an array
-let canShoot = true; // Change to let for mutability
+const missiles = []; // Initialize missiles as an array
+let canShoot = true;
+let canMissileSpawn = true; // Decides if missiles will spawn or not
 const bulletCooldown = 250; // Cooldown in milliseconds
+const missileCooldown = 1500; // Cooldown in milliseconds
+
+const chooseRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const createMissile = () => {
+  if (!canMissileSpawn) return;
+  const missile = {
+    x: chooseRandomNumber(0, 1000),
+    y: 0,
+    speed: 6,
+  };
+  missiles.push(missile);
+  console.log("Created a missile");
+  canMissileSpawn = false; // Disable missile spawning immediately
+  setTimeout(() => {
+    canMissileSpawn = true; // Enable missile spawning after cooldown
+  }, missileCooldown);
+};
+
+const updateMissiles = () => {
+  for (let i = missiles.length - 1; i >= 0; i--) {
+    missiles[i].y += missiles[i].speed;
+
+    if (missiles[i].y > window.innerHeight) { // Check if missile goes out of bounds
+      missiles.splice(i, 1);
+    }
+  }
+};
 
 const createPlayerBullet = (playerX) => {
   if (!canShoot) return;
@@ -63,10 +95,12 @@ window.addEventListener("keyup", handleKeyPress);
 const gameLoop = () => {
   updatePlayerPosition();
   updateBullets();
+  updateMissiles();
+  createMissile();
   requestAnimationFrame(gameLoop);
 };
 
 gameLoop(); // Start the game loop
 
 // Export necessary components
-export { updatePlayerPosition, handleKeyPress, updateBullets, bullets };
+export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles };

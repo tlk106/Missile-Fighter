@@ -1,4 +1,4 @@
-import { updatePlayerPosition, handleKeyPress, updateBullets, bullets } from './game.js';
+import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles } from './game.js';
 
 const canvas = document.getElementById("game-canvas");
 const ctx = canvas.getContext("2d");
@@ -20,6 +20,11 @@ const render = () => {
   // Draw each bullet
   bullets.forEach(bullet => {
     drawCircle(bullet.x, bullet.y, 5, "blue"); // Draw bullets as blue circles
+  });
+
+  // Draw the missiles.
+  missiles.forEach(missile => {
+    drawCircle(missile.x, missile.y, 5, "red"); // Draw missiles as red circles
   });
 };
 
