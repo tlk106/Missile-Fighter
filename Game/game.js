@@ -2,7 +2,7 @@ let playerX = 234;
 let playerY = 1190;
 let score = 0;
 let lives = 3;
-const playerSpeed = 5;
+const playerSpeed = 7.5;
 const playerBulletSpeed = 10;
 const keys = {}; 
 const bullets = []; // Initialize bullets as an array
@@ -11,6 +11,7 @@ let canShoot = true;
 let canMissileSpawn = true; // Decides if missiles will spawn or not
 const bulletCooldown = 250; // Cooldown in milliseconds
 const missileCooldown = 1500; // Cooldown in milliseconds
+let gameOver = false; // Define gameOver state
 
 const chooseRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -56,6 +57,14 @@ const createMissile = () => {
   }, missileCooldown);
 };
 
+const checkLoose = () => {
+  if (lives <= 0) {
+    gameOver = true;
+    console.log("Game Over! Final Score: " + score);
+    alert("Game Over! Your score: " + score);
+  }
+};
+
 const updateMissiles = () => {
   for (let i = missiles.length - 1; i >= 0; i--) {
     missiles[i].y += missiles[i].speed;
@@ -63,7 +72,6 @@ const updateMissiles = () => {
     if (missiles[i].y > window.innerHeight) { // Check if missile goes out of bounds
       missiles.splice(i, 1);
       lives--;
-      console.log("Life lost.")
     }
   }
 };
@@ -122,11 +130,13 @@ window.addEventListener("keyup", handleKeyPress);
 
 // Game loop function
 const gameLoop = () => {
+  if (gameOver) return;
   updatePlayerPosition();
   updateBullets();
   updateMissiles();
   checkBulletMissileCollisions(); // Check for collisions in the game loop
   createMissile();
+  checkLoose(); // Check if player has lost a life
   requestAnimationFrame(gameLoop);
 };
 
