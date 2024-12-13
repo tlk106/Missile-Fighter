@@ -1,6 +1,7 @@
 let playerX = 234;
 let playerY = 1190;
 let score = 0;
+let lives = 3;
 const playerSpeed = 5;
 const playerBulletSpeed = 10;
 const keys = {}; 
@@ -61,6 +62,8 @@ const updateMissiles = () => {
 
     if (missiles[i].y > window.innerHeight) { // Check if missile goes out of bounds
       missiles.splice(i, 1);
+      lives--;
+      console.log("Life lost.")
     }
   }
 };
@@ -130,4 +133,4 @@ const gameLoop = () => {
 gameLoop(); // Start the game loop
 
 // Export necessary components
-export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, score };
+export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, score, lives };

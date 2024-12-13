@@ -8,6 +8,7 @@
 - [X] Missile Deletion
 - [X] Score
 - [ ] Game Over (In Progress)
+- [ ] Make canvas same size on all screen sizes
 - [ ] Game Sprites
 - [ ] Propper Website
 - [ ] Change Log

@@ -10,6 +10,6 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-#score_label {
+.game_label {
   font-size: 50px;
 }

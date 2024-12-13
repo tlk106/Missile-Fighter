@@ -1,4 +1,4 @@
-import { score } from './game.js';
+import { score, lives } from './game.js';
 
 const hideOrShowElementByID = (id) => {
   const element = document.getElementById(id);
@@ -35,10 +35,18 @@ const updateScore = () => {
   }
 };
 
+const updateLives = () => {
+  const lives_label = document.getElementById("lives_label");
+  if (lives_label) {
+    lives_label.innerHTML = lives;
+  }
+};
+
 const play = () => {
   hideOrShowElementByID("menu-container");
   hideOrShowElementByID("game-area");
   setInterval(updateScore, 100);
+  setInterval(updateLives, 100);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
