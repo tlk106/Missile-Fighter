@@ -1,5 +1,6 @@
 let playerX = 234;
 let playerY = 1190;
+let score = 0;
 const playerSpeed = 5;
 const playerBulletSpeed = 10;
 const keys = {}; 
@@ -32,6 +33,7 @@ const checkBulletMissileCollisions = () => {
         console.log("Collision detected between bullet and missile!");
         bullets.splice(i, 1);
         missiles.splice(j, 1);
+        score++;
         break;
       }
     }
@@ -128,4 +130,4 @@ const gameLoop = () => {
 gameLoop(); // Start the game loop
 
 // Export necessary components
-export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles };
+export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, score };

@@ -1,17 +1,13 @@
+import { score } from './game.js';
+
 const hideOrShowElementByID = (id) => {
   const element = document.getElementById(id);
   if (!element) {
     console.log(`Element with ID ${id} not found.`);
     return;
   }
-  
-  if (element.style.display === "none" || element.style.display === "") {
-    element.style.display = "block";
-  } else if (element.style.display === "block") {
-    element.style.display = "none";
-  } else {
-    console.log(`Invalid use of hideOrShowElementByID with element ${id}.`);
-  }
+
+  element.style.display = (element.style.display === "none" || element.style.display === "") ? "block" : "none";
 };
 
 const hideElementByID = (id) => {
@@ -32,15 +28,25 @@ const showElementByID = (id) => {
   }
 };
 
-showElementByID("menu-container");
-hideElementByID("game-area");
+const updateScore = () => {
+  const scoreLabel = document.getElementById("score_label");
+  if (scoreLabel) {
+    scoreLabel.innerHTML = score;
+  }
+};
 
 const play = () => {
   hideOrShowElementByID("menu-container");
   hideOrShowElementByID("game-area");
+  setInterval(updateScore, 100);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   showElementByID("menu-container");
   hideElementByID("game-area");
+  
+  const playButton = document.getElementById("play-button");
+  if (playButton) {
+    playButton.addEventListener("click", play);
+  }
 });

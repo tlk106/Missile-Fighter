@@ -6,9 +6,10 @@
 - [X] Bullets
 - [X] Missiles
 - [X] Missile Deletion
-- [ ] Score (In Progress)
-- [ ] Game Over
-- [ ] Website
+- [X] Score
+- [ ] Game Over (In Progress)
+- [ ] Game Sprites
+- [ ] Propper Website
 - [ ] Change Log
 
 ### Other Tasks
