@@ -116,7 +116,9 @@ const updatePlayerPosition = () => {
   return [playerX, playerY];
 };
 
+
 const handleKeyPress = (event) => {
+  if (gameOver) return;
   if (event.type === "keydown") {
     keys[event.key] = true;
   } else if (event.type === "keyup") {
