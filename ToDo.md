@@ -8,10 +8,10 @@
 - [X] Missile Deletion
 - [X] Score
 - [X] Game Over
-- [ ] Make canvas same size on all screen sizes (In Progress)
+- [X] Make canvas same size on all screen sizes
 - [ ] Make everything smoother, make code better and document code properly (In Progress)
-- [ ] Game Sprites
 - [ ] Propper Website
+- [ ] Game Sprites
 - [ ] Change Log
 
 ### Other Tasks

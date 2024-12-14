@@ -103,10 +103,13 @@ const updateBullets = () => {
 };
 
 const updatePlayerPosition = () => {
-  if (keys["a"]) {
+  const leftBoundary = 0;
+  const rightBoundary = 2200;
+
+  if (keys["a"] && playerX > leftBoundary) {
     playerX -= playerSpeed;
   }
-  if (keys["d"]) {
+  if (keys["d"] && playerX < rightBoundary) {
     playerX += playerSpeed;
   }
   if (keys[" "]) {
