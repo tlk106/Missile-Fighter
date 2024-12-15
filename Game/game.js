@@ -1,81 +1,91 @@
-let playerX = 234;
-let playerY = 1190;
-let score = 0;
-let lives = 3;
-const playerSpeed = 7.5;
-const playerBulletSpeed = 10;
-const keys = {}; 
-const bullets = []; // Initialize bullets as an array
-const missiles = []; // Initialize missiles as an array
-let canShoot = true;
-let canMissileSpawn = true; // Decides if missiles will spawn or not
-const bulletCooldown = 250; // Cooldown in milliseconds
-const missileCooldown = 1500; // Cooldown in milliseconds
-let gameOver = false; // Define gameOver state
+// Player's initial position and game state variables
+let playerX = 234; // Player X position
+let playerY = 1190; // Player Y position
+let score = 0; // Player Score
+let lives = 3; // Player lives
+const playerSpeed = 7.5; // Player speed
+const playerBulletSpeed = 10; // Bullet speed
 
+const keys = {}; 
+const bullets = []; // Bullets array
+const missiles = []; // Missiles array
+
+let canShoot = true;
+let canMissileSpawn = true; // Missile spawn control
+const bulletCooldown = 250; // Bullet cooldown in ms
+const missileCooldown = 1500; // Missile cooldown in ms
+let gameOver = false; // Game over state
+
+// Function to choose a random number between min and max
 const chooseRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+// Function to check collision between two points
 const checkcollision = (x1, y1, x2, y2, checkradius) => {
   const dx = x2 - x1;
   const dy = y2 - y1;
   const distance = Math.sqrt(dx * dx + dy * dy);
-  return distance <= checkradius;
+  return distance <= checkradius; // Return true if within radius
 };
 
+// Check collisions between bullets and missiles
 const checkBulletMissileCollisions = () => {
   for (let i = bullets.length - 1; i >= 0; i--) {
     for (let j = missiles.length - 1; j >= 0; j--) {
       const bullet = bullets[i];
       const missile = missiles[j];
-      const collisionRadius = 26;
+      const collisionRadius = 26; // Collision detection radius
 
       if (checkcollision(bullet.x, bullet.y, missile.x, missile.y, collisionRadius)) {
         console.log("Collision detected between bullet and missile!");
-        bullets.splice(i, 1);
-        missiles.splice(j, 1);
-        score++;
-        break;
+        bullets.splice(i, 1); // Remove bullet
+        missiles.splice(j, 1); // Remove missile
+        score++; // Increment score
+        break; // Break inner loop
       }
     }
   }
 };
 
+// Create a missile
 const createMissile = () => {
   if (!canMissileSpawn) return;
   const missile = {
-    x: chooseRandomNumber(0, 2200),
-    y: 0,
-    speed: 6,
+    x: chooseRandomNumber(0, 2200), // Random x position
+    y: 0, // Starting y position
+    speed: 6, // Speed of missile
   };
   missiles.push(missile);
   console.log("Created a missile");
-  canMissileSpawn = false; // Disable missile spawning immediately
+  canMissileSpawn = false; // Disable missile spawning
   setTimeout(() => {
-    canMissileSpawn = true; // Enable missile spawning after cooldown
+    canMissileSpawn = true; // Re-enable after cooldown
   }, missileCooldown);
 };
 
+// Check if the player has lost all lives
 const checkLoose = () => {
   if (lives <= 0) {
-    gameOver = true;
+    gameOver = true; 
     console.log("Game Over! Final Score: " + score);
     alert("Game Over! Your score: " + score);
   }
 };
 
+// Update missiles' positions
 const updateMissiles = () => {
   for (let i = missiles.length - 1; i >= 0; i--) {
     missiles[i].y += missiles[i].speed;
 
-    if (missiles[i].y > window.innerHeight) { // Check if missile goes out of bounds
+    if (missiles[i].y > window.innerHeight) { 
       missiles.splice(i, 1);
-      lives--;
+      lives--; // Decrease lives
     }
   }
 };
 
+// Create a bullet when the player shoots
 const createPlayerBullet = (playerX) => {
   if (!canShoot) return;
   const bullet = {
@@ -85,25 +95,29 @@ const createPlayerBullet = (playerX) => {
   };
   bullets.push(bullet);
   console.log("Bullet Created");
-  canShoot = false;
+  canShoot = false; // Disable shooting
 
+  // Reset shooting ability after cooldown
   setTimeout(() => {
-    canShoot = true; // Reset shooting ability after cooldown
+    canShoot = true; 
   }, bulletCooldown);
 };
 
+// Update bullets' positions
 const updateBullets = () => {
   for (let i = bullets.length - 1; i >= 0; i--) {
     bullets[i].y -= bullets[i].speed;
 
     if (bullets[i].y < 0) {
-      bullets.splice(i, 1);
+      bullets.splice(i, 1); 
     }
   }
 };
 
+// Update player's position based on key presses
 const updatePlayerPosition = () => {
-  const leftBoundary = 0;
+  if (gameOver) return;
+  const leftBoundary = 0; 
   const rightBoundary = 2200;
 
   if (keys["a"] && playerX > leftBoundary) {
@@ -119,33 +133,39 @@ const updatePlayerPosition = () => {
   return [playerX, playerY];
 };
 
-
+// Handle key press events
 const handleKeyPress = (event) => {
   if (gameOver) return;
-  if (event.type === "keydown") {
-    keys[event.key] = true;
-  } else if (event.type === "keyup") {
-    keys[event.key] = false;
-  }
+  keys[event.key] = event.type === "keydown"; // Set key state
 };
 
 // Add event listeners for key presses
 window.addEventListener("keydown", handleKeyPress);
 window.addEventListener("keyup", handleKeyPress);
 
-// Game loop function
+// Game loop function to update game state
 const gameLoop = () => {
   if (gameOver) return;
   updatePlayerPosition();
   updateBullets();
   updateMissiles();
-  checkBulletMissileCollisions(); // Check for collisions in the game loop
+  checkBulletMissileCollisions();
   createMissile();
-  checkLoose(); // Check if player has lost a life
-  requestAnimationFrame(gameLoop);
+  checkLoose();
+  requestAnimationFrame(gameLoop); // Continue loop
 };
 
-gameLoop(); // Start the game loop
+// Start the game loop when play button is pressed
+const play = () => {
+  gameLoop(); 
+};
 
-// Export necessary components
+document.addEventListener("DOMContentLoaded", () => {
+  const playButton = document.getElementById("play-button");
+  if (playButton) {
+    playButton.addEventListener("click", play);
+  }
+});
+
+// Export necessary components for potential use in other modules
 export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, score, lives };

@@ -9,10 +9,11 @@
 - [X] Score
 - [X] Game Over
 - [X] Make canvas same size on all screen sizes
-- [ ] Make everything smoother, make code better and document code properly (In Progress)
-- [ ] Propper Website
-- [ ] Game Sprites
+- [X] Make everything smoother, make code better and document code properly
+- [ ] Propper Website (In Progress)
 - [ ] Change Log
+- [ ] Make it run with a server
+- [ ] Game Sprites
 
 ### Other Tasks
 
