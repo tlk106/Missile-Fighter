@@ -1,5 +1,7 @@
 # To Do
 
+---
+
 ### First Release
 
 - [X] Player Movement
@@ -13,15 +15,28 @@
 - [ ] Propper Website (In Progress)
 - [ ] Change Log
 - [ ] Make it run with a server
-- [ ] Game Sprites
 
-### Other Tasks
+---
+
+## Other Tasks
 
 - [ ] Unprivate this repo
 - [ ] Create Discord server
 - [ ] Create a Trello board and put this on discord instead of on the GitHub.
 - [ ] Host the game
 - [ ] Advertise the game on Discord bio and YouTube channel
+
+---
+
+## Second Release
+
+- [ ] Game Sprites
+  - [ ] Missiles
+  - [ ] Player
+  - [ ] Bullets
+  - [ ] Backround
+
+---
 
 ### Later
 

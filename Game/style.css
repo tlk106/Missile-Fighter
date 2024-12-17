@@ -11,6 +11,30 @@ canvas {
   overflow: hidden;
 }
 
+#menu-container {
+  text-align: center;
+}
+
+#title {
+  margin-top: 35px;
+  font-size: 50px;
+}
+
+.menu_buttons {
+  padding: 10px 15px; 
+  border: 1px solid #ccc; 
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 150px;
+}
+
+.menu_buttons:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
 #game-ui {
   position: absolute;
   top: 0;
