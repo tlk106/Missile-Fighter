@@ -29,12 +29,16 @@
 ---
 
 ## Second Release
-
+- [ ] Sprite Showing Code
 - [ ] Game Sprites
   - [ ] Missiles
   - [ ] Player
   - [ ] Bullets
-  - [ ] Backround
+  - [ ] Game Background
+   - [ ] Life 1
+   - [ ] Life 2
+   - [ ] Life 3
+   - [ ] Life 4
 
 ---
 
@@ -42,3 +46,5 @@
 
 - [ ] Buy Domain
 - [ ] Ads (option to turn them off because i'm not evil)
+- [ ] Menu Background
+- [ ] Menu Music
