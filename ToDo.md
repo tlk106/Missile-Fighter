@@ -13,7 +13,9 @@
 - [X] Make canvas same size on all screen sizes
 - [X] Make everything smoother, make code better and document code properly
 - [ ] Propper Website (In Progress)
-- [ ] Change Log
+- [ ] Change Log (In Progress)
+  - [X] Add link
+  - [ ] Add page
 - [ ] Make it run with a server
 
 ---
