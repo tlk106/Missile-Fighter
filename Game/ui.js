@@ -37,7 +37,7 @@ const showElementByID = (id) => {
 const updateScore = () => {
   const scoreLabel = document.getElementById("score_label");
   if (scoreLabel) {
-    scoreLabel.innerHTML = score; // Display current score
+    scoreLabel.innerHTML = `Score: ${score}`; // Display current score
   }
 };
 
@@ -45,7 +45,7 @@ const updateScore = () => {
 const updateLives = () => {
   const lives_label = document.getElementById("lives_label");
   if (lives_label) {
-    lives_label.innerHTML = lives; // Display current lives
+    lives_label.innerHTML = `Lives: ${lives}`; // Display current lives
   }
 };
 
