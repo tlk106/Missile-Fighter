@@ -2,7 +2,7 @@
 let playerX = 234; // Player X position
 let playerY = 1190; // Player Y position
 let score = 0; // Player Score
-let lives = 3; // Player lives
+let lives = 4; // Player lives
 const playerSpeed = 7.5; // Player speed
 const playerBulletSpeed = 10; // Bullet speed
 
