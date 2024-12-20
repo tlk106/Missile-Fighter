@@ -14,7 +14,7 @@
 - [X] Make everything smoother, make code better and document code properly
 - [ ] Propper Website (In Progress)
 - [X] Change Log
-- [ ] Make it run with a server
+- [ ] Make it run with a server (IN PROGRESS)
 
 ---
 

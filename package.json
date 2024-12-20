@@ -1,0 +1,15 @@
+{
+  "name": "Missile-Fighter",
+  "version": "ALPHA 1.0",
+  "description": "A simple game where you defened against missiles!",
+  "main": "Game/index.js",
+  "scripts": {
+    "dev": "node Game/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http": "0.0.1-security"
+  }
+}
