@@ -75,10 +75,12 @@ const checkLoose = () => {
 
 // Update missiles' positions
 const updateMissiles = () => {
+  const canvas = document.getElementById("game-canvas");
+  const scaleY = canvas.height / 1200; // Calculate the scale factor for the canvas height
   for (let i = missiles.length - 1; i >= 0; i--) {
     missiles[i].y += missiles[i].speed;
 
-    if (missiles[i].y > window.innerHeight) { 
+    if (missiles[i].y > canvas.height / scaleY) { // Adjust the condition to account for the scaled height
       missiles.splice(i, 1);
       lives--; // Decrease lives
     }
