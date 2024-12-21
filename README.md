@@ -32,3 +32,6 @@ A fun 2D game where you shoot missiles before they hit you!
 
 ## YouTube
 - [My YouTube](https://www.youtube.com/@T.L.K.1.0.6)
+
+## Trello
+- [The Trello](https://trello.com/b/vC0wLhtf/missile-fighter)
