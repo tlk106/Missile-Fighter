@@ -5,6 +5,16 @@ import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMis
 const canvas = document.getElementById("game-canvas");
 const ctx = canvas.getContext("2d");
 
+// Function to resize the canvas to fit the window
+const resizeCanvas = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+};
+
+// Call resizeCanvas initially and on window resize
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
 // Function to draw a circle on the canvas
 const drawCircle = (x, y, radius, color) => {
   ctx.fillStyle = color; // Set the fill color
@@ -17,6 +27,14 @@ const drawCircle = (x, y, radius, color) => {
 const render = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
   
+  // Save the current context state
+  ctx.save();
+
+  // Scale the context to fit the canvas size
+  const scaleX = canvas.width / 2200;
+  const scaleY = canvas.height / 1200;
+  ctx.scale(scaleX, scaleY);
+
   const [playerX, playerY] = updatePlayerPosition(); // Update player position
 
   drawCircle(playerX, playerY, 15, "black"); // Draw player
@@ -30,6 +48,9 @@ const render = () => {
   missiles.forEach(missile => {
     drawCircle(missile.x, missile.y, 18, "red");
   });
+
+  // Restore the context to its original state
+  ctx.restore();
 };
 
 // Main game loop function

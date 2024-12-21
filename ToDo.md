@@ -10,11 +10,11 @@
 - [X] Missile Deletion
 - [X] Score
 - [X] Game Over
-- [ ] Make canvas same size on all screen sizes (REDO) (IN PROGRESS)
+- [X] Make canvas same size on all screen sizes
 - [X] Make everything smoother, make code better and document code properly
 - [ ] Propper Website (In Progress)
 - [X] Change Log
-- [ ] Make it run with a server (IN PROGRESS)
+- [X] Make it run with a server
 
 ---
 
