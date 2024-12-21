@@ -22,7 +22,7 @@
 
 - [X] Unprivate this repo
 - [X] Create Discord server
-- [ ] Create a Trello board (In Progress)
+- [X] Create a Trello board
 - [ ] Host the game
 - [ ] Advertise the game on Discord bio and YouTube channel (In Progress)
 
