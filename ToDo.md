@@ -20,15 +20,15 @@
 
 ## Other Tasks
 
-- [ ] Unprivate this repo
-- [ ] Create Discord server
-- [ ] Create a Trello board and put this on discord instead of on the GitHub.
+- [X] Unprivate this repo
+- [X] Create Discord server
+- [ ] Create a Trello board and put this on discord instead of on the GitHub. (In Progress)
 - [ ] Host the game
-- [ ] Advertise the game on Discord bio and YouTube channel
+- [ ] Advertise the game on Discord bio and YouTube channel (In Progress)
 
 ---
 
-## Second Release
+## Alpha 1.2
 - [ ] Sprite Showing Code
 - [ ] Game Sprites
   - [ ] Missiles
