@@ -22,13 +22,13 @@
 
 - [X] Unprivate this repo
 - [X] Create Discord server
-- [ ] Create a Trello board and put this on discord instead of on the GitHub. (In Progress)
+- [ ] Create a Trello board (In Progress)
 - [ ] Host the game
 - [ ] Advertise the game on Discord bio and YouTube channel (In Progress)
 
 ---
 
-## Alpha 1.2
+## Alpha 1.1
 - [ ] Sprite Showing Code
 - [ ] Game Sprites
   - [ ] Missiles
