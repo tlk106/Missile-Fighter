@@ -12,7 +12,7 @@
 - [X] Game Over
 - [X] Make canvas same size on all screen sizes
 - [X] Make everything smoother, make code better and document code properly
-- [ ] Propper Website (In Progress)
+- [X] Propper Website
 - [X] Change Log
 - [X] Make it run with a server
 
