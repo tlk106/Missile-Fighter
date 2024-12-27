@@ -40,7 +40,8 @@ canvas {
 .footer-link {
   text-decoration: none;
   color: #007BFF;
-  font-size: 20px;
+  font-size: 15px;
+  margin: 0 10px;
 }
 
 .footer-link:hover {

@@ -28,6 +28,9 @@ const server = http.createServer((req, res) => {
     } else if (req.url === "/ChangeLog") {
         filePath = path.join(__dirname, "changelog.html");
         contentType = "text/html"; 
+    } else if (req.url === "/HowToPlay") {
+        filePath = path.join(__dirname, "howtoplay.html");
+        contentType = "text/html";
     } else if (req.url === "/favicon.ico") {
         filePath = path.join(__dirname, "favicon.ico");
         contentType = "image/x-icon";
