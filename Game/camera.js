@@ -28,6 +28,10 @@ const drawImage = (img, x, y, width, height) => {
   ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
 };
 
+// Load the player image
+const playerImage = new Image();
+playerImage.src = 'player.png'; // Make sure to add the player.png file to your project directory
+
 // Render function to draw game elements
 const render = (bulletImage) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
@@ -42,12 +46,12 @@ const render = (bulletImage) => {
 
   const [playerX, playerY] = updatePlayerPosition(); // Update player position
 
-  drawCircle(playerX, playerY, 15, "black"); // Draw player
-
   // Draw bullets
   bullets.forEach(bullet => {
     drawImage(bulletImage, bullet.x, bullet.y, 50, 50); // Draw bullet image
   });
+
+  drawImage(playerImage, playerX, playerY, 75, 75); // Draw player image
 
   // Draw missiles
   missiles.forEach(missile => {
