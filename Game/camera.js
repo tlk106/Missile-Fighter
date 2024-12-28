@@ -23,8 +23,13 @@ const drawCircle = (x, y, radius, color) => {
   ctx.fill(); // Fill the circle
 };
 
+// Function to draw an image on the canvas
+const drawImage = (img, x, y, width, height) => {
+  ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
+};
+
 // Render function to draw game elements
-const render = () => {
+const render = (bulletImage) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
   
   // Save the current context state
@@ -41,7 +46,7 @@ const render = () => {
 
   // Draw bullets
   bullets.forEach(bullet => {
-    drawCircle(bullet.x, bullet.y, 5, "blue");
+    drawImage(bulletImage, bullet.x, bullet.y, 50, 50); // Draw bullet image
   });
 
   // Draw missiles
@@ -54,13 +59,17 @@ const render = () => {
 };
 
 // Main game loop function
-const gameLoop = () => {
-  render(); // Render the game elements
-  requestAnimationFrame(gameLoop); // Request the next frame
+const gameLoop = (bulletImage) => {
+  render(bulletImage); // Render the game elements
+  requestAnimationFrame(() => gameLoop(bulletImage)); // Request the next frame
 };
 
-// Start the game loop
-requestAnimationFrame(gameLoop);
+// Load the bullet image and start the game loop
+const bulletImage = new Image();
+bulletImage.src = 'bullet.png';
+bulletImage.onload = () => {
+  requestAnimationFrame(() => gameLoop(bulletImage));
+};
 
 // Add event listeners for key presses
 document.addEventListener("keydown", handleKeyPress);
