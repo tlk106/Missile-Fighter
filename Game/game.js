@@ -1,6 +1,6 @@
 // Player's initial position and game state variables
 let playerX = 1000; // Player X position
-let playerY = 1100; // Player Y position
+let playerY = 1175; // Player Y position
 let score = 0; // Player Score
 let lives = 4; // Player lives
 const playerSpeed = 7.5; // Player speed
@@ -35,7 +35,7 @@ const checkBulletMissileCollisions = () => {
     for (let j = missiles.length - 1; j >= 0; j--) {
       const bullet = bullets[i];
       const missile = missiles[j];
-      const collisionRadius = 26; // Collision detection radius
+      const collisionRadius = 32; // Collision detection radius
 
       if (checkcollision(bullet.x, bullet.y, missile.x, missile.y, collisionRadius)) {
         console.log("Collision detected between bullet and missile!");

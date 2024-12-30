@@ -9,6 +9,7 @@ const ctx = canvas.getContext("2d");
 const resizeCanvas = () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  ctx.imageSmoothingEnabled = false;
 };
 
 // Call resizeCanvas initially and on window resize
@@ -30,7 +31,11 @@ const drawImage = (img, x, y, width, height) => {
 
 // Load the player image
 const playerImage = new Image();
-playerImage.src = 'player.png'; // Make sure to add the player.png file to your project directory
+playerImage.src = 'player.png';
+
+// Load the missile image
+const missileImage = new Image();
+missileImage.src = 'missile.png';
 
 // Render function to draw game elements
 const render = (bulletImage) => {
@@ -55,7 +60,7 @@ const render = (bulletImage) => {
 
   // Draw missiles
   missiles.forEach(missile => {
-    drawCircle(missile.x, missile.y, 18, "red");
+    drawImage(missileImage, missile.x, missile.y, 100, 100); // Draw missile image
   });
 
   // Restore the context to its original state

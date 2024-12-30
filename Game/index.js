@@ -40,6 +40,9 @@ const server = http.createServer((req, res) => {
     } else if (req.url === "/player.png") {
         filePath = path.join(__dirname, "player.png");
         contentType = "image/png";
+    } else if (req.url === "/missile.png") {
+        filePath = path.join(__dirname, "missile.png");
+        contentType = "image/png";
     } else {
         res.writeHead(404, { "Content-Type": "text/plain" });
         res.end("404 Not Found");
