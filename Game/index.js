@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
 
     // Determine the file path and content type based on the request URL
     if (req.url === "/") {
-        filePath = path.join(__dirname, "index.html");
+        filePath = path.join(__dirname, "../index.html");
         contentType = "text/html";
     } else if (req.url === "/style.css") {
         filePath = path.join(__dirname, "style.css");
