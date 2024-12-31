@@ -1,26 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './Game/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-    ],
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000,
-  },
+    entry: './game/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'game'), // Output in the same directory
+    },
+    mode: 'development', // Change to 'production' for production builds
 };
