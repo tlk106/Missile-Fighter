@@ -59,7 +59,7 @@ const startGameLoop = (bulletImage) => {
 backgroundImage.onload = () => {
   // Load the bullet image and start the game loop
   const bulletImage = new Image();
-  bulletImage.src = 'game/img/bullet.png';
+  bulletImage.src = 'Game/img/bullet.png';
   bulletImage.onload = () => {
     startGameLoop(bulletImage);
   };
