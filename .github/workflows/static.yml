@@ -1,3 +1,9 @@
+site:
+  title: Missile Fighter
+  description: Game where you control a turret and shoot down missiles in space
+  author: TLK106
+  language: en
+
 routes:
   /:
     file: index.html
@@ -21,4 +27,40 @@ routes:
     file: img/player.png
   /favicon.ico:
     file: img/favicon.ico
-  
+
+assets:
+  css:
+    - /style.css
+  js:
+    - /camera.js
+    - /game.js
+    - /ui.js
+  images:
+    - /img/background.png
+    - /img/background2.png
+    - /img/background3.png
+    - /img/background4.png
+    - /img/bullet.png
+    - /img/missile.png
+    - /img/player.png
+    - /img/favicon.ico
+
+navigation:
+  - name: Home
+    url: /
+  - name: Change Log
+    url: /ChangeLog
+  - name: How to Play
+    url: /HowToPlay
+
+content:
+  directory: /Game
+
+build:
+  minify: true
+  cache: true
+
+deploy:
+  provider: github
+  repository: TLK106/Missile-Fighter
+  branch: main
