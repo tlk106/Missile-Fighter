@@ -1,66 +1,35 @@
-site:
-  title: Missile Fighter
-  description: Game where you control a turret and shoot down missiles in space
-  author: TLK106
-  language: en
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
-routes:
-  /:
-    file: index.html
-  /ChangeLog:
-    file: ChangeLog/index.html
-  /HowToPlay:
-    file: HowToPlay/index.html
-  /background.png:
-    file: img/background.png
-  /background2.png:
-    file: img/background2.png
-  /background3.png:
-    file: img/background3.png
-  /background4.png:
-    file: img/background4.png
-  /bullet.png:
-    file: img/bullet.png
-  /missile.png:
-    file: img/missile.png
-  /player.png:
-    file: img/player.png
-  /favicon.ico:
-    file: img/favicon.ico
+on:
+  push:
+    branches: ["main"]  # Runs on pushes targeting the default branch
+  workflow_dispatch:     # Allows manual runs from the Actions tab
 
-assets:
-  css:
-    - /style.css
-  js:
-    - /camera.js
-    - /game.js
-    - /ui.js
-  images:
-    - /img/background.png
-    - /img/background2.png
-    - /img/background3.png
-    - /img/background4.png
-    - /img/bullet.png
-    - /img/missile.png
-    - /img/player.png
-    - /img/favicon.ico
+permissions:
+  contents: read        # Set permissions for reading contents
+  pages: write          # Set permissions for writing to GitHub Pages
+  id-token: write       # Set permissions for ID token
 
-navigation:
-  - name: Home
-    url: /
-  - name: Change Log
-    url: /ChangeLog
-  - name: How to Play
-    url: /HowToPlay
+concurrency:
+  group: "pages"        # Allow only one concurrent deployment
+  cancel-in-progress: false  # Do not cancel in-progress runs
 
-content:
-  directory: /Game
-
-build:
-  minify: true
-  cache: true
-
-deploy:
-  provider: github
-  repository: TLK106/Missile-Fighter
-  branch: main
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  # Set environment URL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4  # Checkout the repository
+      - name: Setup Pages
+        uses: actions/configure-pages@v5  # Setup for GitHub Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'  # Upload entire repository
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4  # Deploy to GitHub Pages
