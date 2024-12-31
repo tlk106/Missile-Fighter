@@ -1,10 +1,36 @@
 const path = require('path');
 
 module.exports = {
-    entry: './game/index.js',
+  entry: './Game/index.js', // Entry file
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'game'), // Output in the same directory
+        filename: 'bundle.js', // Output filename
+        path: path.resolve(__dirname, 'Game'), // Output directory
     },
-    mode: 'development', // Change to 'production' for production builds
+    module: {
+        rules: [
+            {
+                test: /\.js$/, // Load JavaScript files
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+            {
+                test: /\.(png|jpg|gif|ico)$/, // Load image files
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]', // Output image filename
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.css$/, // Load CSS files
+                use: ['style-loader', 'css-loader'],
+            },
+        ],
+    },
+    mode: 'production', // Set the mode to production
 };
