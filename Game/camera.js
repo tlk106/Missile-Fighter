@@ -31,24 +31,24 @@ const drawImage = (img, x, y, width, height) => {
 
 // Load the player image
 const playerImage = new Image();
-playerImage.src = 'game/img/player.png';
+playerImage.src = 'Game/img/player.png';
 
 // Load the missile image
 const missileImage = new Image();
-missileImage.src = 'game/img/missile.png';
+missileImage.src = 'Game/img/missile.png';
 
 // Load the background image
 const backgroundImage = new Image();
-backgroundImage.src = 'game/img/background.png';
+backgroundImage.src = 'Game/img/background.png';
 
 const background2Image = new Image();
-background2Image.src = 'game/img/background2.png';
+background2Image.src = 'Game/img/background2.png';
 
 const background3Image = new Image();
-background3Image.src = 'game/img/background3.png';
+background3Image.src = 'Game/img/background3.png';
 
 const background4Image = new Image();
-background4Image.src = 'game/img/background4.png';
+background4Image.src = 'Game/img/background4.png';
 
 // Function to start the game loop
 const startGameLoop = (bulletImage) => {
