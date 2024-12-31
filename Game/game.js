@@ -70,6 +70,7 @@ const checkLoose = () => {
     gameOver = true; 
     console.log("Game Over! Final Score: " + score);
     alert("Game Over! Your score: " + score);
+    location.reload();
   }
 };
 

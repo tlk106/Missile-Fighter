@@ -46,6 +46,15 @@ const server = http.createServer((req, res) => {
     } else if (req.url === "/background.png") {
         filePath = path.join(__dirname, "background.png");
         contentType = "image/png";
+    } else if (req.url === "/background2.png") {
+        filePath = path.join(__dirname, "background2.png");
+        contentType = "image/png";
+    } else if (req.url === "/background3.png") {
+        filePath = path.join(__dirname, "background3.png");
+        contentType = "image/png";
+    } else if (req.url === "/background4.png") {
+        filePath = path.join(__dirname, "background4.png");
+        contentType = "image/png";
     } else {
         res.writeHead(404, { "Content-Type": "text/plain" });
         res.end("404 Not Found");

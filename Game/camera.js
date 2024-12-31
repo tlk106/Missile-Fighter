@@ -1,5 +1,5 @@
 // Import functions and variables from the game module
-import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles } from './game.js';
+import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives } from './game.js';
 
 // Get the canvas element and its drawing context
 const canvas = document.getElementById("game-canvas");
@@ -41,6 +41,15 @@ missileImage.src = 'missile.png';
 const backgroundImage = new Image();
 backgroundImage.src = 'background.png';
 
+const background2Image = new Image();
+background2Image.src = 'background2.png';
+
+const background3Image = new Image();
+background3Image.src = 'background3.png';
+
+const background4Image = new Image();
+background4Image.src = 'background4.png';
+
 // Function to start the game loop
 const startGameLoop = (bulletImage) => {
   requestAnimationFrame(() => gameLoop(bulletImage));
@@ -68,8 +77,24 @@ const render = (bulletImage) => {
   const scaleY = canvas.height / 1200;
   ctx.scale(scaleX, scaleY);
 
-  // Draw the background image
-  ctx.drawImage(backgroundImage, 0, 0, 2200, 1200);
+  // Draw the background image based on the number of lives
+  switch (lives) {
+    case 4:
+      drawImage(backgroundImage, 1100, 600, 2200, 1200);
+      break;
+    case 3:
+      drawImage(background2Image, 1100, 600, 2200, 1200);
+      break;
+    case 2:
+      drawImage(background3Image, 1100, 600, 2200, 1200);
+      break;
+    case 1:
+      drawImage(background4Image, 1100, 600, 2200, 1200);
+      break;
+  
+    default:
+      break;
+  }
 
   const [playerX, playerY] = updatePlayerPosition(); // Update player position
 
