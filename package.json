@@ -4,7 +4,8 @@
   "description": "A simple game where you defened against missiles!",
   "main": "Game/index.js",
   "scripts": {
-    "dev": "node Game/index.js"
+    "dev": "node Game/index.js",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "TLK106",
