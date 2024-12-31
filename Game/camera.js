@@ -37,6 +37,25 @@ playerImage.src = 'player.png';
 const missileImage = new Image();
 missileImage.src = 'missile.png';
 
+// Load the background image
+const backgroundImage = new Image();
+backgroundImage.src = 'background.png';
+
+// Function to start the game loop
+const startGameLoop = (bulletImage) => {
+  requestAnimationFrame(() => gameLoop(bulletImage));
+};
+
+// Ensure the background image is loaded before starting the game loop
+backgroundImage.onload = () => {
+  // Load the bullet image and start the game loop
+  const bulletImage = new Image();
+  bulletImage.src = 'bullet.png';
+  bulletImage.onload = () => {
+    startGameLoop(bulletImage);
+  };
+};
+
 // Render function to draw game elements
 const render = (bulletImage) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
@@ -48,6 +67,9 @@ const render = (bulletImage) => {
   const scaleX = canvas.width / 2200;
   const scaleY = canvas.height / 1200;
   ctx.scale(scaleX, scaleY);
+
+  // Draw the background image
+  ctx.drawImage(backgroundImage, 0, 0, 2200, 1200);
 
   const [playerX, playerY] = updatePlayerPosition(); // Update player position
 
@@ -71,13 +93,6 @@ const render = (bulletImage) => {
 const gameLoop = (bulletImage) => {
   render(bulletImage); // Render the game elements
   requestAnimationFrame(() => gameLoop(bulletImage)); // Request the next frame
-};
-
-// Load the bullet image and start the game loop
-const bulletImage = new Image();
-bulletImage.src = 'bullet.png';
-bulletImage.onload = () => {
-  requestAnimationFrame(() => gameLoop(bulletImage));
 };
 
 // Add event listeners for key presses
