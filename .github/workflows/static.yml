@@ -1,3 +1,24 @@
 routes:
   /:
     file: index.html
+  /ChangeLog:
+    file: ChangeLog/index.html
+  /HowToPlay:
+    file: HowToPlay/index.html
+  /background.png:
+    file: img/background.png
+  /background2.png:
+    file: img/background2.png
+  /background3.png:
+    file: img/background3.png
+  /background4.png:
+    file: img/background4.png
+  /bullet.png:
+    file: img/bullet.png
+  /missile.png:
+    file: img/missile.png
+  /player.png:
+    file: img/player.png
+  /favicon.ico:
+    file: img/favicon.ico
+  
