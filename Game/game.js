@@ -146,21 +146,35 @@ const handleKeyPress = (event) => {
 window.addEventListener("keydown", handleKeyPress);
 window.addEventListener("keyup", handleKeyPress);
 
-// Game loop function to update game state
-const gameLoop = () => {
-  if (gameOver) return;
-  updatePlayerPosition();
-  updateBullets();
-  updateMissiles();
-  checkBulletMissileCollisions();
-  createMissile();
-  checkLoose();
-  requestAnimationFrame(gameLoop); // Continue loop
+const targetFPS = 120;
+const frameTime = 1000 / targetFPS; // Time per frame in milliseconds
+
+let lastFrameTime = 0; // Time of the last frame
+
+const gameLoop = (currentTime) => {
+    if (gameOver) return;
+
+    // Calculate the time elapsed since the last frame
+    const deltaTime = currentTime - lastFrameTime;
+
+    // If enough time has passed, update the game state
+    if (deltaTime >= frameTime) {
+        lastFrameTime = currentTime; // Update last frame time
+        updatePlayerPosition();
+        updateBullets();
+        updateMissiles();
+        checkBulletMissileCollisions();
+        createMissile();
+        checkLoose();
+    }
+
+    requestAnimationFrame(gameLoop); // Continue loop
 };
 
 // Start the game loop when play button is pressed
 const play = () => {
-  gameLoop(); 
+  lastFrameTime = performance.now(); // Initialize last frame time
+  requestAnimationFrame(gameLoop); // Start the game loop
 };
 
 document.addEventListener("DOMContentLoaded", () => {
