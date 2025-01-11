@@ -140,6 +140,13 @@ canvas {
 .news-title {
   font-size: 22px;
   color: #ffffff;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.news-paragraph {
+  text-align: left;
+  margin-left: 10px;
 }
 
 .menu-title {
