@@ -19,6 +19,26 @@ body, html {
   image-rendering: pixelated;
 }
 
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+}
+
 canvas {
   background-color: #1e1e1e;
   margin: 0;
