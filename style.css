@@ -1,0 +1,175 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #2a2a2a;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url("Game/img/menu-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+  background-color: #1e1e1e;
+  margin: 0;
+  padding: 0;
+  height: 100vh; 
+  display: block;
+  overflow: hidden;
+}
+
+#non-title-menu {
+  background-color: rgba(80, 80, 80, 0.502);
+  width: 20%;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.502);
+}
+
+#link-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #a1a1a1;
+  font-size: 15px;
+  margin: 0 5px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+#menu-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+#title {
+  font-size: 50px;
+  margin: 50px;
+  color: #aad0ff;
+}
+
+.menu_buttons {
+  padding: 15px 20px; 
+  border: none; 
+  background-color: rgb(30, 70, 130);
+  color: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.menu_buttons:hover {
+  background-color: rgb(60, 100, 180);
+  transform: scale(1.05);
+}
+
+#game-ui {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.game_label {
+  font-size: 45px;
+  color: #ffffff;
+  font-family: 'Press Start 2P';
+}
+
+.side-menu {
+  position: absolute;
+  top: 25%;
+  width: 20%;
+  height: 50%;
+  background-color: rgba(40, 40, 40, 0.502);
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#left-menu {
+  left: 65%;
+}
+
+#coming-soon-label {
+  font-size: 25px;
+  color: #ffffff;
+  top: 25%;
+  right: 20%;
+  position: absolute;
+}
+
+#news-menu {
+  position: absolute;
+  top: 25%; 
+  right: 65%;
+  overflow-y: auto; 
+}
+
+.news-content {
+  max-height: 100%;
+  padding: 10px; 
+}
+
+.news-content {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.news-title {
+  font-size: 22px;
+  color: #ffffff;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.news-paragraph {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.menu-title {
+  font-size: 30px;
+  color: #66aaff;
+}
