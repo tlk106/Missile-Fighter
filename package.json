@@ -1,6 +1,6 @@
 {
   "name": "Missile-Fighter",
-  "version": "ALPHA 1.1.1",
+  "version": "ALPHA 1.1.2",
   "description": "A simple game where you defend against missiles!",
   "main": "Game/index.js",
   "scripts": {
