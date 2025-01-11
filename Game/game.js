@@ -38,7 +38,6 @@ const checkBulletMissileCollisions = () => {
       const collisionRadius = 32; // Collision detection radius
 
       if (checkcollision(bullet.x, bullet.y, missile.x, missile.y, collisionRadius)) {
-        console.log("Collision detected between bullet and missile!");
         bullets.splice(i, 1); // Remove bullet
         missiles.splice(j, 1); // Remove missile
         score++; // Increment score
@@ -57,7 +56,6 @@ const createMissile = () => {
     speed: 6, // Speed of missile
   };
   missiles.push(missile);
-  console.log("Created a missile");
   canMissileSpawn = false; // Disable missile spawning
   setTimeout(() => {
     canMissileSpawn = true; // Re-enable after cooldown
@@ -68,7 +66,6 @@ const createMissile = () => {
 const checkLoose = () => {
   if (lives <= 0) {
     gameOver = true; 
-    console.log("Game Over! Final Score: " + score);
     alert("Game Over! Your score: " + score);
     location.reload();
   }
@@ -97,7 +94,6 @@ const createPlayerBullet = (playerX) => {
     speed: playerBulletSpeed,
   };
   bullets.push(bullet);
-  console.log("Bullet Created");
   canShoot = false; // Disable shooting
 
   // Reset shooting ability after cooldown
@@ -132,7 +128,6 @@ const updatePlayerPosition = () => {
   if (keys[" "]) {
     createPlayerBullet(playerX);
   }
-  console.log(`Player Position: (${playerX}, ${playerY})`);
   return [playerX, playerY];
 };
 
