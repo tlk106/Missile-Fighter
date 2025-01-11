@@ -18,7 +18,6 @@ canvas {
   background-color: #fff;
   margin: 0;
   padding: 0;
-  width: 100vw; 
   height: 100vh; 
   display: block;
   overflow: hidden;
@@ -40,9 +39,9 @@ canvas {
 
 .footer-link {
   text-decoration: none;
-  color: #007BFF;
+  color: #002e5f;
   font-size: 15px;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .footer-link:hover {
@@ -55,8 +54,8 @@ canvas {
 }
 
 #title {
-  margin-top: 35px;
   font-size: 50px;
+  margin: 50px;
   color: #007BFF;
 }
 
@@ -68,7 +67,7 @@ canvas {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  width: 50%;
+  width: 100%;
   margin-bottom: 10px;
   font-size: 18px;
 }
@@ -89,4 +88,55 @@ canvas {
 .game_label {
   font-size: 75px;
   color: #ffffff;
+}
+
+.side-menu {
+  position: absolute;
+  top: 25%;
+  width: 20%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#left-menu {
+  left: 65%;
+}
+
+#coming-soon-label {
+  font-size: 25px;
+  color: #16283b;
+  top: 25%;
+  right: 20%;
+  position: absolute;
+
+}
+
+#news-menu {
+  position: absolute;
+  top: 25%; 
+  right: 65%;
+  overflow-y: auto; 
+}
+
+.news-content {
+  max-height: 100%;
+  padding: 10px; 
+}
+
+.news-content {
+  font-size: 20px;
+  color: #16283b;
+}
+
+.news-title {
+  font-size: 22px;
+  color: #001b38;
+}
+
+.menu-title {
+  font-size: 30px;
+  color: #007BFF;
 }
