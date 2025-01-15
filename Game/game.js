@@ -5,6 +5,7 @@ let score = 0; // Player Score
 let lives = 4; // Player lives
 const playerSpeed = 7.5; // Player speed
 const playerBulletSpeed = 10; // Bullet speed
+let bulletcount = 250; // Bullet count
 
 const keys = {}; 
 const bullets = []; // Bullets array
@@ -95,6 +96,7 @@ const createPlayerBullet = (playerX) => {
   };
   bullets.push(bullet);
   canShoot = false; // Disable shooting
+  bulletcount--; // Decrease bullet count
 
   // Reset shooting ability after cooldown
   setTimeout(() => {
@@ -180,4 +182,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Export necessary components for potential use in other modules
-export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, score, lives };
+export { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, score, lives, bulletcount };

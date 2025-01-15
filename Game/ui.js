@@ -1,5 +1,5 @@
-// Import score and lives from the game module
-import { score, lives } from './game.js';
+// Import score, lives, and bulletcount from the game module
+import { score, lives, bulletcount } from './game.js';
 
 // Function to toggle visibility of an element by its ID
 const hideOrShowElementByID = (id) => {
@@ -43,9 +43,17 @@ const updateScore = () => {
 
 // Function to update the lives display
 const updateLives = () => {
-  const lives_label = document.getElementById("lives_label");
-  if (lives_label) {
-    lives_label.innerHTML = `Lives: ${lives}`; // Display current lives
+  const livesLabel = document.getElementById("lives_label");
+  if (livesLabel) {
+    livesLabel.innerHTML = `Lives: ${lives}`; // Display current lives
+  }
+};
+
+// Function to update the bullet count display
+const updateBulletCount = () => {
+  const bulletCountLabel = document.getElementById("bullet_count_label");
+  if (bulletCountLabel) {
+    bulletCountLabel.innerHTML = `Bullets: ${bulletcount}`; // Display current bullet count
   }
 };
 
@@ -55,6 +63,7 @@ const play = () => {
   hideOrShowElementByID("game-area"); // Toggle game area visibility
   setInterval(updateScore, 100); // Update score every 100 ms
   setInterval(updateLives, 100); // Update lives every 100 ms
+  setInterval(updateBulletCount, 100); // Update bullet count every 100 ms
 };
 
 // Event listener for when the DOM is fully loaded
