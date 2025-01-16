@@ -1,5 +1,5 @@
 // Import functions and variables from the game module
-import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives } from './game.js';
+import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives, bulletDrops, updateBulletDrops } from './game.js';
 
 // Get the canvas element and its drawing context
 const canvas = document.getElementById("game-canvas");
@@ -37,7 +37,12 @@ playerImage.src = 'Game/img/player.png';
 const missileImage = new Image();
 missileImage.src = 'Game/img/missile.png';
 
-// Load the background image
+// Load bullet drop images
+
+const bulletDropImage = new Image();
+bulletDropImage.src = 'Game/img/bullet-drop2.png';
+
+// Load the background images
 const backgroundImage = new Image();
 backgroundImage.src = 'Game/img/background.png';
 
@@ -49,6 +54,7 @@ background3Image.src = 'Game/img/background3.png';
 
 const background4Image = new Image();
 background4Image.src = 'Game/img/background4.png';
+
 
 // Function to start the game loop
 const startGameLoop = (bulletImage) => {
@@ -108,6 +114,11 @@ const render = (bulletImage) => {
   // Draw missiles
   missiles.forEach(missile => {
     drawImage(missileImage, missile.x, missile.y, 100, 100); // Draw missile image
+  });
+
+  // Draw bullet drops
+  bulletDrops.forEach(drop => {
+    drawImage(bulletDropImage, drop.x, drop.y, 50, 50); // Draw bullet drop image
   });
 
   // Restore the context to its original state
