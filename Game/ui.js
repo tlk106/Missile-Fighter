@@ -54,6 +54,13 @@ const updateBulletCount = () => {
   const bulletCountLabel = document.getElementById("bullet_count_label");
   if (bulletCountLabel) {
     bulletCountLabel.innerHTML = `Bullets: ${bulletcount}`; // Display current bullet count
+
+    // Change the color to yellow if bullet count is 0
+    if (bulletcount === 0) {
+      bulletCountLabel.style.color = "yellow";
+    } else {
+      bulletCountLabel.style.color = ""; // Reset to default color
+    }
   }
 };
 
@@ -70,7 +77,7 @@ const play = () => {
 document.addEventListener("DOMContentLoaded", () => {
   showElementByID("menu-container"); // Show menu
   hideElementByID("game-area"); // Hide game area initially
-  
+
   const playButton = document.getElementById("play-button");
   if (playButton) {
     playButton.addEventListener("click", play); // Start the game

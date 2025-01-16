@@ -5,7 +5,7 @@ let score = 0; // Player Score
 let lives = 4; // Player lives
 const playerSpeed = 7.5; // Player speed
 const playerBulletSpeed = 10; // Bullet speed
-let bulletcount = 250; // Bullet count
+let bulletcount = 20; // Bullet count
 
 const keys = {}; 
 const bullets = []; // Bullets array
@@ -89,6 +89,7 @@ const updateMissiles = () => {
 // Create a bullet when the player shoots
 const createPlayerBullet = (playerX) => {
   if (!canShoot) return;
+  if (bulletcount <= 0) return; // Check if there are bullets left
   const bullet = {
     x: playerX,
     y: playerY,
