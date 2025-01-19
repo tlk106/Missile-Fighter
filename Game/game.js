@@ -7,7 +7,7 @@ const playerSpeed = 7.5; // Player speed
 const playerBulletSpeed = 10; // Bullet speed
 let bulletcount = 250; // Bullet count
 
-const keys = {}; 
+const keys = {};
 const bullets = []; // Bullets array
 const missiles = []; // Missiles array
 const bulletDrops = []; // Bullet drops array
@@ -33,55 +33,63 @@ const checkcollision = (x1, y1, x2, y2, checkradius) => {
   return distance <= checkradius; // Return true if within radius
 };
 
-// Check collisions between bullets and missiles
-const checkBulletMissileCollisions = () => {
-  for (let i = bullets.length - 1; i >= 0; i--) {
-    for (let j = missiles.length - 1; j >= 0; j--) {
-      const bullet = bullets[i];
-      const missile = missiles[j];
-      const collisionRadius = 32; // Collision detection radius
-
-      if (checkcollision(bullet.x, bullet.y, missile.x, missile.y, collisionRadius)) {
-        bullets.splice(i, 1); // Remove bullet
-        missiles.splice(j, 1); // Remove missile
-        score++; // Increment score
-        break; // Break inner loop
+// Generalized collision checking function
+const checkCollisions = (objects1, objects2, collisionHandler) => {
+  for (let i = objects1.length - 1; i >= 0; i--) {
+    for (let j = objects2.length - 1; j >= 0; j--) {
+      if (checkcollision(objects1[i].x, objects1[i].y, objects2[j].x, objects2[j].y, 32)) {
+        collisionHandler(objects1[i], objects2[j]);
+        objects1.splice(i, 1);
+        objects2.splice(j, 1);
+        break;
       }
     }
   }
 };
 
-const checkBulletBulletDropCollisions = () => {
-  for (let i = bullets.length - 1; i >= 0; i--) {
-    for (let j = bulletDrops.length - 1; j >= 0; j--) {
-      const bullet = bullets[i];
-      const drop = bulletDrops[j];
-      const collisionRadius = 32; // Collision detection radius
-      if (checkcollision(bullet.x, bullet.y, drop.x, drop.y, collisionRadius)) {
-        bullets.splice(i, 1); // Remove bullet
-        bulletDrops.splice(j, 1); // Remove bullet drop
-        bulletcount += 50; // Increase bullet count
-        break; // Break inner loop
-      }
-    }
+// Check collisions between bullets and missiles
+const handleBulletMissileCollision = (bullet, missile) => {
+  score++; // Increment score
+};
+
+// Check collisions between bullets and bullet drops
+const handleBulletBulletDropCollision = (bullet, drop) => {
+  if (drop.cratetype === 1) {
+    bulletcount += 20; // Increase bullet count for type 1
+  } else if (drop.cratetype === 2) {
+    bulletcount += 50; // Increase bullet count for type 2
+  } else if (drop.cratetype === 3) {
+    bulletcount += 85; // Increase bullet count for type 3
   }
-}
+};
 
 const createBulletDrop = () => {
   if (!canBulletDrop) return; // Check if bullet drops can be created
+
+  // Determine drop type based on specified probabilities
+  const randomValue = Math.random();
+  let dropType;
+
+  if (randomValue < 0.5) {
+    dropType = 1; // 50% chance
+  } else if (randomValue < 0.875) {
+    dropType = 2; // 37.5% chance
+  } else {
+    dropType = 3; // 12.5% chance
+  }
 
   const bulletDrop = {
     x: chooseRandomNumber(0, 2200), // Random x position
     y: 0, // Starting y position
     speed: 3, // Speed of bullet drop
-    cratetype: chooseRandomNumber(1, 3), // Random crate type
+    cratetype: dropType, // Assign the determined drop type
   };
   bulletDrops.push(bulletDrop);
   canBulletDrop = false; // Disable bullet drop spawning
 
   // Re-enable after cooldown
   setTimeout(() => {
-    canBulletDrop = true; 
+    canBulletDrop = true;
   }, bulletDropCooldown);
 };
 
@@ -99,7 +107,7 @@ const updateBulletDrops = () => {
 
 const createMissile = () => {
   if (!canMissileSpawn) return; // Check if missiles can be created
-  
+
   const missile = {
     x: chooseRandomNumber(0, 2200), // Random x position
     y: 0, // Starting y position
@@ -110,7 +118,7 @@ const createMissile = () => {
 
   // Re-enable after cooldown
   setTimeout(() => {
-    canMissileSpawn = true; 
+    canMissileSpawn = true;
   }, missileCooldown);
 };
 
@@ -212,14 +220,16 @@ const gameLoop = (currentTime) => {
     updateBullets();
     updateMissiles();
     updateBulletDrops();
-    checkBulletMissileCollisions();
-    checkBulletBulletDropCollisions();
-    
+
+    // Check for collisions
+    checkCollisions(bullets, missiles, handleBulletMissileCollision);
+    checkCollisions(bullets, bulletDrops, handleBulletBulletDropCollision);
+
     // Create bullet drop only if allowed
     createBulletDrop(); // This will respect the cooldown
 
     // Create missile only if allowed
-    createMissile(); 
+    createMissile();
 
     checkLoose();
   }

@@ -38,9 +38,14 @@ const missileImage = new Image();
 missileImage.src = 'Game/img/missile.png';
 
 // Load bullet drop images
+const bulletDropImage1 = new Image();
+bulletDropImage1.src = 'Game/img/bullet-drop1.png';
 
-const bulletDropImage = new Image();
-bulletDropImage.src = 'Game/img/bullet-drop2.png';
+const bulletDropImage2 = new Image();
+bulletDropImage2.src = 'Game/img/bullet-drop2.png';
+
+const bulletDropImage3 = new Image();
+bulletDropImage3.src = 'Game/img/bullet-drop3.png';
 
 // Load the background images
 const backgroundImage = new Image();
@@ -54,7 +59,6 @@ background3Image.src = 'Game/img/background3.png';
 
 const background4Image = new Image();
 background4Image.src = 'Game/img/background4.png';
-
 
 // Function to start the game loop
 const startGameLoop = (bulletImage) => {
@@ -74,7 +78,7 @@ backgroundImage.onload = () => {
 // Render function to draw game elements
 const render = (bulletImage) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  
+
   // Save the current context state
   ctx.save();
 
@@ -97,7 +101,6 @@ const render = (bulletImage) => {
     case 1:
       drawImage(background4Image, 1100, 600, 2200, 1200);
       break;
-  
     default:
       break;
   }
@@ -116,9 +119,15 @@ const render = (bulletImage) => {
     drawImage(missileImage, missile.x, missile.y, 100, 100); // Draw missile image
   });
 
-  // Draw bullet drops
+  // Draw bullet drops with different images based on type
   bulletDrops.forEach(drop => {
-    drawImage(bulletDropImage, drop.x, drop.y, 50, 50); // Draw bullet drop image
+    if (drop.cratetype === 1) {
+      drawImage(bulletDropImage1, drop.x, drop.y, 50, 50); // Draw bullet drop image type 1
+    } else if (drop.cratetype === 2) {
+      drawImage(bulletDropImage2, drop.x, drop.y, 50, 50); // Draw bullet drop image type 2
+    } else if (drop.cratetype === 3) {
+      drawImage(bulletDropImage3, drop.x, drop.y, 50, 50); // Draw bullet drop image type 3
+    }
   });
 
   // Restore the context to its original state
