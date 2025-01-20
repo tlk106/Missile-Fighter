@@ -11,7 +11,10 @@ const keys = {};
 const bullets = []; // Bullets array
 const missiles = []; // Missiles array
 const bulletDrops = []; // Bullet drops array
+const suppliesDrop = []; // Supplies drop array
 
+let canSuppliesDrop = true; // Supplies drop control
+const suppliesDropCooldown = 20000; // Supplies drop cooldown in ms
 let canShoot = true;
 let canMissileSpawn = true; // Missile spawn control
 let canBulletDrop = true; // Bullet drop control
@@ -63,6 +66,42 @@ const handleBulletBulletDropCollision = (bullet, drop) => {
   }
 };
 
+// Check collisions between player and supplies drop
+const handlePlayerSuppliesDropCollision = (player, drop) => {
+  if (drop.createType === 1) {
+    lives++; // Increase lives for type 1
+  } else if (drop.createType === 2) {
+    lives += 2; // Increase lives for type 2
+  }
+};
+
+// Create supplies drop
+const createSuppliesDrop = () => {
+  if (!canSuppliesDrop) return; // Check if supplies drop can be created
+
+  let dropType;
+
+  if (randomValue < 0.75) {
+    dropType = 1; // 75% chance
+  } else {
+    dropType = 2; // 25% chance
+  };
+
+  const suppliesDrop = {
+    x: chooseRandomNumber(0, 2200), // Random x position
+    y: 0, // Starting y position
+    speed: 3, // Speed of supplies drop
+    createType: dropType , // Assign the determined drop type
+  };
+  suppliesDrops.push(suppliesDrop);
+  canSuppliesDrop = false; // Disable supplies drop spawning
+
+  // Re-enable after cooldown
+  setTimeout(() => {
+    canSuppliesDrop = true;
+  }, suppliesDropCooldown);
+}
+
 const createBulletDrop = () => {
   if (!canBulletDrop) return; // Check if bullet drops can be created
 
@@ -93,6 +132,20 @@ const createBulletDrop = () => {
   }, bulletDropCooldown);
 };
 
+// Update supplies drop positions
+const updateSuppliesDrop = () => {
+  const canvas = document.getElementById("game-canvas");
+  const scaleY = canvas.height / 1200; // Calculate the scale factor for the canvas height
+  for (let i = suppliesDrop.length - 1; i >= 0; i--) {
+    suppliesDrop[i].y += suppliesDrop[i].speed;
+
+    if (suppliesDrop[i].y > canvas.height / scaleY) {
+      suppliesDrop.splice(i, 1);
+    }
+  }
+};
+
+// Update bullet drops positions
 const updateBulletDrops = () => {
   const canvas = document.getElementById("game-canvas");
   const scaleY = canvas.height / 1200; // Calculate the scale factor for the canvas height
@@ -262,5 +315,7 @@ export {
   bulletDrops,
   updateBulletDrops,
   score,
-  bulletcount
+  bulletcount,
+  suppliesDrop,
+  updateSuppliesDrop,
 };

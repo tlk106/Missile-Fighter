@@ -1,5 +1,5 @@
 // Import functions and variables from the game module
-import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives, bulletDrops, updateBulletDrops } from './game.js';
+import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives, bulletDrops, updateBulletDrops, suppliesDrop, updateSuppliesDrop } from './game.js';
 
 // Get the canvas element and its drawing context
 const canvas = document.getElementById("game-canvas");
@@ -28,6 +28,13 @@ const drawCircle = (x, y, radius, color) => {
 const drawImage = (img, x, y, width, height) => {
   ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
 };
+
+// Load the supplies drop image
+const suppliesDropImage1 = new Image();
+suppliesDropImage.src = 'Game/img/supplies-drop1.png';
+
+const suppliesDropImage2 = new Image();
+suppliesDropImage.src = 'Game/img/supplies-drop1.png2';
 
 // Load the player image
 const playerImage = new Image();
