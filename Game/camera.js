@@ -31,10 +31,10 @@ const drawImage = (img, x, y, width, height) => {
 
 // Load the supplies drop image
 const suppliesDropImage1 = new Image();
-suppliesDropImage.src = 'Game/img/supplies-drop1.png';
+suppliesDropImage1.src = 'Game/img/supplies-drop1.png';
 
 const suppliesDropImage2 = new Image();
-suppliesDropImage.src = 'Game/img/supplies-drop1.png2';
+suppliesDropImage2.src = 'Game/img/supplies-drop2.png';
 
 // Load the player image
 const playerImage = new Image();
@@ -94,24 +94,24 @@ const render = (bulletImage) => {
   const scaleY = canvas.height / 1200;
   ctx.scale(scaleX, scaleY);
 
-  // Draw the background image based on the number of lives
-  switch (lives) {
-    case 4:
-      drawImage(backgroundImage, 1100, 600, 2200, 1200);
-      break;
-    case 3:
-      drawImage(background2Image, 1100, 600, 2200, 1200);
-      break;
-    case 2:
-      drawImage(background3Image, 1100, 600, 2200, 1200);
-      break;
-    case 1:
-      drawImage(background4Image, 1100, 600, 2200, 1200);
-      break;
-    default:
-      break;
+// Draw the background image based on the number of lives
+  if (lives >= 4) {
+  drawImage(backgroundImage, 1100, 600, 2200, 1200);
+  } else {
+      switch (lives) {
+        case 3:
+          drawImage(background2Image, 1100, 600, 2200, 1200);
+          break;
+        case 2:
+          drawImage(background3Image, 1100, 600, 2200, 1200);
+          break;
+        case 1:
+          drawImage(background4Image, 1100, 600, 2200, 1200);
+          break;
+        default:
+          break;
+    }
   }
-
   const [playerX, playerY] = updatePlayerPosition(); // Update player position
 
   // Draw bullets
@@ -134,6 +134,15 @@ const render = (bulletImage) => {
       drawImage(bulletDropImage2, drop.x, drop.y, 50, 50); // Draw bullet drop image type 2
     } else if (drop.cratetype === 3) {
       drawImage(bulletDropImage3, drop.x, drop.y, 50, 50); // Draw bullet drop image type 3
+    }
+  });
+
+  // Draw supplies drop with different images based on type
+  suppliesDrop.forEach(drop => {
+    if (drop.createType === 1) {
+      drawImage(suppliesDropImage1, drop.x, drop.y, 50, 50); // Draw supplies drop image type 1
+    } else if (drop.createType === 2) {
+      drawImage(suppliesDropImage2, drop.x, drop.y, 50, 50); // Draw supplies drop image type 2
     }
   });
 

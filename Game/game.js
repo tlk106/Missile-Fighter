@@ -81,19 +81,21 @@ const createSuppliesDrop = () => {
 
   let dropType;
 
+  let randomValue = Math.random();
+
   if (randomValue < 0.75) {
     dropType = 1; // 75% chance
   } else {
     dropType = 2; // 25% chance
   };
 
-  const suppliesDrop = {
+  const supplyDrop = {
     x: chooseRandomNumber(0, 2200), // Random x position
     y: 0, // Starting y position
     speed: 3, // Speed of supplies drop
-    createType: dropType , // Assign the determined drop type
+    createType: dropType, // Assign the determined drop type
   };
-  suppliesDrops.push(suppliesDrop);
+  suppliesDrop.push(supplyDrop); // Push the new supply drop to the array
   canSuppliesDrop = false; // Disable supplies drop spawning
 
   // Re-enable after cooldown
@@ -273,16 +275,21 @@ const gameLoop = (currentTime) => {
     updateBullets();
     updateMissiles();
     updateBulletDrops();
+    updateSuppliesDrop();
 
     // Check for collisions
     checkCollisions(bullets, missiles, handleBulletMissileCollision);
     checkCollisions(bullets, bulletDrops, handleBulletBulletDropCollision);
+    checkCollisions(bullets, suppliesDrop, handlePlayerSuppliesDropCollision);
 
     // Create bullet drop only if allowed
     createBulletDrop(); // This will respect the cooldown
 
     // Create missile only if allowed
     createMissile();
+
+    // Create supplies drop only if allowed
+    createSuppliesDrop();
 
     checkLoose();
   }
