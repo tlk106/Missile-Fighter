@@ -6,6 +6,7 @@ let lives = 4; // Player lives
 const playerSpeed = 7.5; // Player speed
 const playerBulletSpeed = 10; // Bullet speed
 let bulletcount = 250; // Bullet count
+let timer = 0; // How long the game has been running
 
 const keys = {};
 const bullets = []; // Bullets array
@@ -301,6 +302,13 @@ const gameLoop = (currentTime) => {
 const play = () => {
   lastFrameTime = performance.now(); // Initialize last frame time
   requestAnimationFrame(gameLoop); // Start the game loop
+
+  // Start the timer
+  setInterval(() => {
+    if (!gameOver) {
+      timer += 1;
+    }
+  }, 1000);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -325,4 +333,5 @@ export {
   bulletcount,
   suppliesDrop,
   updateSuppliesDrop,
+  timer,
 };

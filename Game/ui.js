@@ -1,5 +1,5 @@
 // Import score, lives, and bulletcount from the game module
-import { score, lives, bulletcount } from './game.js';
+import { score, lives, bulletcount, timer } from './game.js';
 
 // Function to toggle visibility of an element by its ID
 const hideOrShowElementByID = (id) => {
@@ -49,6 +49,14 @@ const updateLives = () => {
   }
 };
 
+// Function to update the timer display
+const updateTimer = () => {
+  const timerLabel = document.getElementById("timer_label");
+  if (timerLabel) {
+    timerLabel.innerHTML = `Time: ${timer}`; // Display current time
+  }
+};
+
 // Function to update the bullet count display
 const updateBulletCount = () => {
   const bulletCountLabel = document.getElementById("bullet_count_label");
@@ -71,6 +79,7 @@ const play = () => {
   setInterval(updateScore, 100); // Update score every 100 ms
   setInterval(updateLives, 100); // Update lives every 100 ms
   setInterval(updateBulletCount, 100); // Update bullet count every 100 ms
+  setInterval(updateTimer, 100); // Update timer every 100 ms
 };
 
 // Event listener for when the DOM is fully loaded
