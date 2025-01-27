@@ -1,62 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Missile Fighter is a game where you shoot missiles!!!">
-    <meta name="keywords" content="Missile Fighter, game, missiles, shoot, fun">
-    <meta name="author" content="TLK106">
-    <title>Missile Fighter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Game/img/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-  </head>
-  <body>
-    <div id="container">
-      <div id="menu-container">
-        <h1 id="title">Missile Fighter</h1>
-        <div class="side-menu" id="news-menu">
-          <h1 class="menu-title">What's New?</h1>
-          <div class="content-container">
-            <div class="news-title">ALPHA 1.1.2</div>
-            <div class="news-content">
-              <p class="news-paragraph">- Added a menu Background and improved the style of the menu.</p>
-              <p class="news-paragraph">- Added a news menu.</p>
-              <p class="news-paragraph">- Changed game UI to be more pixalated.</p>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Missile Fighter is a game where you shoot missiles!!!">
+  <meta name="keywords" content="Missile Fighter, game, missiles, shoot, fun">
+  <meta name="author" content="TLK106">
+  <title>Missile Fighter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Game/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <div id="container">
+    <div id="menu-container">
+      <h1 id="title">Missile Fighter</h1>
+      <div class="side-menu" id="news-menu">
+        <h1 class="menu-title">What's New?</h1>
+        <div class="content-container">
+          <div class="news-title">ALPHA 1.1.2</div>
+          <div class="news-content">
+            <p class="news-paragraph">- Added a menu Background and improved the style of the menu.</p>
+            <p class="news-paragraph">- Added a news menu.</p>
+            <p class="news-paragraph">- Changed game UI to be more pixalated.</p>
           </div>
-
         </div>
-        <div id="non-title-menu">
-          <button class="menu_buttons" id="play-button">Play</button>
-          <div id="link-container">
-            <a href="ChangeLog/index.html" class="footer-link">ALPHA 1.1.2</a>
-            <a href="HowToPlay/index.html" class="footer-link">How To Play</a>
-            <a href="https://discord.com/invite/RksCGBnwyQ" class="footer-link">Discord</a>
-          </div>
-          <div class="side-menu" id="left-menu">
-            <p id="coming-soon-label">Coming Soon!</p>
-          </div>
+      </div>
+      <div id="non-title-menu">
+        <button class="menu_buttons" id="play-button">Play</button>
+        <div id="link-container">
+          <a href="ChangeLog/index.html" class="footer-link">ALPHA 1.1.2</a>
+          <a href="HowToPlay/index.html" class="footer-link">How To Play</a>
+          <a href="https://discord.com/invite/RksCGBnwyQ" class="footer-link">Discord</a>
+        </div>
+        <div class="side-menu" id="left-menu">
+          <p id="coming-soon-label">Coming Soon!</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div id="game-area">
-      <div id="game-canvas-container">
-        <canvas width="2200" height="1200" id="game-canvas"></canvas>
-      </div>
-      <div id="game-ui">
-        <div id="game_labels-container">
-          <label class="game_label" id="score_label">Score: 0</label> <br>
-          <label class="game_label" id="lives_label">Lives: 4</label> <br>
-          <label class="game_label" id="bullet_count_label">Bullets: 250</label> <br>
-          <label class="game_label" id="timer_label">Time: 0</label>
-        </div>
+  <div id="game_over-container" style="display: none;">
+    <h1 id="game_over-title">Game Over</h1>
+    <label class="game-over-label" id="game_over_score_label">Final Score: 0</label> <br>
+    <label class="game-over-label" id="game_over_timer_label">Time: 0</label>
+    <button class="menu_buttons" id="reload-button">Next</button>
+  </div>
+
+  <div id="game-area">
+    <div id="game-canvas-container">
+      <canvas width="2200" height="1200" id="game-canvas"></canvas>
+    </div>
+    <div id="game-ui">
+      <div id="game_labels-container">
+        <label class="game_label" id="score_label">Score: 0</label> <br>
+        <label class="game_label" id="lives_label">Lives: 4</label> <br>
+        <label class="game_label" id="bullet_count_label">Bullets: 250</label> <br>
+        <label class="game_label" id="timer_label">Time: 0</label>
       </div>
     </div>
-    <script type="module" src="Game/camera.js"></script>
-    <script type="module" src="Game/ui.js"></script>
-    <script type="module" src="Game/game.js"></script>
-  </body>
+  </div>
+  <script type="module" src="Game/camera.js"></script>
+  <script type="module" src="Game/ui.js"></script>
+  <script type="module" src="Game/game.js"></script>
+</body>
 </html>

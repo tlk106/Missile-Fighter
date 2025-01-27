@@ -182,8 +182,6 @@ const createMissile = () => {
 const checkLoose = () => {
   if (lives <= 0) {
     gameOver = true;
-    alert("Game Over! Your score: " + score);
-    location.reload();
   }
 };
 
@@ -334,4 +332,5 @@ export {
   suppliesDrop,
   updateSuppliesDrop,
   timer,
+  gameOver,
 };
