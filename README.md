@@ -1,4 +1,4 @@
-# Missile-Fighter
+# Missile-Fighter | Alpha 1.2.0
 A fun 2D game where you shoot missiles before they hit you!
 
 # Links!:
