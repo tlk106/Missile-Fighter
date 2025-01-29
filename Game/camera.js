@@ -1,5 +1,5 @@
 // Import functions and variables from the game module
-import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives } from './game.js';
+import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives, bulletDrops, updateBulletDrops, suppliesDrop, updateSuppliesDrop } from './game.js';
 
 // Get the canvas element and its drawing context
 const canvas = document.getElementById("game-canvas");
@@ -29,6 +29,13 @@ const drawImage = (img, x, y, width, height) => {
   ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
 };
 
+// Load the supplies drop image
+const suppliesDropImage1 = new Image();
+suppliesDropImage1.src = 'Game/img/supplies-drop1.png';
+
+const suppliesDropImage2 = new Image();
+suppliesDropImage2.src = 'Game/img/supplies-drop2.png';
+
 // Load the player image
 const playerImage = new Image();
 playerImage.src = 'Game/img/player.png';
@@ -37,7 +44,17 @@ playerImage.src = 'Game/img/player.png';
 const missileImage = new Image();
 missileImage.src = 'Game/img/missile.png';
 
-// Load the background image
+// Load bullet drop images
+const bulletDropImage1 = new Image();
+bulletDropImage1.src = 'Game/img/bullet-drop1.png';
+
+const bulletDropImage2 = new Image();
+bulletDropImage2.src = 'Game/img/bullet-drop2.png';
+
+const bulletDropImage3 = new Image();
+bulletDropImage3.src = 'Game/img/bullet-drop3.png';
+
+// Load the background images
 const backgroundImage = new Image();
 backgroundImage.src = 'Game/img/background.png';
 
@@ -68,7 +85,7 @@ backgroundImage.onload = () => {
 // Render function to draw game elements
 const render = (bulletImage) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-  
+
   // Save the current context state
   ctx.save();
 
@@ -77,25 +94,24 @@ const render = (bulletImage) => {
   const scaleY = canvas.height / 1200;
   ctx.scale(scaleX, scaleY);
 
-  // Draw the background image based on the number of lives
-  switch (lives) {
-    case 4:
-      drawImage(backgroundImage, 1100, 600, 2200, 1200);
-      break;
-    case 3:
-      drawImage(background2Image, 1100, 600, 2200, 1200);
-      break;
-    case 2:
-      drawImage(background3Image, 1100, 600, 2200, 1200);
-      break;
-    case 1:
-      drawImage(background4Image, 1100, 600, 2200, 1200);
-      break;
-  
-    default:
-      break;
+// Draw the background image based on the number of lives
+  if (lives >= 4) {
+  drawImage(backgroundImage, 1100, 600, 2200, 1200);
+  } else {
+      switch (lives) {
+        case 3:
+          drawImage(background2Image, 1100, 600, 2200, 1200);
+          break;
+        case 2:
+          drawImage(background3Image, 1100, 600, 2200, 1200);
+          break;
+        case 1:
+          drawImage(background4Image, 1100, 600, 2200, 1200);
+          break;
+        default:
+          break;
+    }
   }
-
   const [playerX, playerY] = updatePlayerPosition(); // Update player position
 
   // Draw bullets
@@ -108,6 +124,26 @@ const render = (bulletImage) => {
   // Draw missiles
   missiles.forEach(missile => {
     drawImage(missileImage, missile.x, missile.y, 100, 100); // Draw missile image
+  });
+
+  // Draw bullet drops with different images based on type
+  bulletDrops.forEach(drop => {
+    if (drop.cratetype === 1) {
+      drawImage(bulletDropImage1, drop.x, drop.y, 50, 50); // Draw bullet drop image type 1
+    } else if (drop.cratetype === 2) {
+      drawImage(bulletDropImage2, drop.x, drop.y, 50, 50); // Draw bullet drop image type 2
+    } else if (drop.cratetype === 3) {
+      drawImage(bulletDropImage3, drop.x, drop.y, 50, 50); // Draw bullet drop image type 3
+    }
+  });
+
+  // Draw supplies drop with different images based on type
+  suppliesDrop.forEach(drop => {
+    if (drop.createType === 1) {
+      drawImage(suppliesDropImage1, drop.x, drop.y, 50, 50); // Draw supplies drop image type 1
+    } else if (drop.createType === 2) {
+      drawImage(suppliesDropImage2, drop.x, drop.y, 50, 50); // Draw supplies drop image type 2
+    }
   });
 
   // Restore the context to its original state

@@ -11,6 +11,12 @@ importers:
       fs:
         specifier: 0.0.1-security
         version: 0.0.1-security
+      fss:
+        specifier: ^1.0.0
+        version: 1.0.0
+      http:
+        specifier: 0.0.1-security
+        version: 0.0.1-security
       path:
         specifier: ^0.12.7
         version: 0.12.7
@@ -404,6 +410,9 @@ packages:
   fs@0.0.1-security:
     resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
 
+  fss@1.0.0:
+    resolution: {integrity: sha512-njF1AaTBUO49CQFdr8Lv+zlOYX1YI9/XsY7rH3HML/MYU5UJC/tcvv4vmFlzMzIsX/jCvOoL517m8c4WJL5Pmg==}
+
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
@@ -428,6 +437,9 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  http@0.0.1-security:
+    resolution: {integrity: sha512-RnDvP10Ty9FxqOtPZuxtebw1j4L/WiqNMDtuc1YMH1XQm5TgDRaR1G9u8upL6KD1bXHSp9eSXo/ED+8Q7FAr+g==}
 
   icss-utils@5.1.0:
     resolution: {integrity: sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==}
@@ -1203,6 +1215,8 @@ snapshots:
 
   fs@0.0.1-security: {}
 
+  fss@1.0.0: {}
+
   function-bind@1.1.2: {}
 
   gensync@1.0.0-beta.2: {}
@@ -1218,6 +1232,8 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  http@0.0.1-security: {}
 
   icss-utils@5.1.0(postcss@8.4.49):
     dependencies:

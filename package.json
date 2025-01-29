@@ -1,6 +1,6 @@
 {
   "name": "Missile-Fighter",
-  "version": "ALPHA 1.1.2",
+  "version": "ALPHA 1.2.0",
   "description": "A simple game where you defend against missiles!",
   "main": "Game/index.js",
   "scripts": {
@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "fs": "0.0.1-security",
+    "fss": "^1.0.0",
+    "http": "0.0.1-security",
     "path": "^0.12.7"
   },
   "devDependencies": {

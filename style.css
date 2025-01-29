@@ -175,3 +175,36 @@ canvas {
   font-size: 30px;
   color: #66aaff;
 }
+
+#game_over-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(80, 80, 80, 0.8);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.502);
+  text-align: center;
+  display: none; /* Initially hidden */
+}
+
+#game_over-label {
+  font-size: 50px;
+  color: #aad0ff;
+  margin-bottom: 20px;
+}
+
+.game-over-label {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+#reload-button {
+  margin-top: 20px;
+}
+
+#game_over-title {
+  font-size: 30px;
+  color: #ffffff;
+}
