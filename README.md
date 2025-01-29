@@ -3,8 +3,8 @@ A fun 2D game where you shoot missiles before they hit you!
 
 # Links!:
 
-[Discord](https://discord.com/invite/RksCGBnwyQ)
-[The Game!!!](https://tlk106.github.io/Missile-Fighter/)
+- [Discord](https://discord.com/invite/RksCGBnwyQ)
+- [The Game!!!](https://tlk106.github.io/Missile-Fighter/)
 
 # HOW TO RUN:
 
