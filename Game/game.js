@@ -1,11 +1,14 @@
+// Import configuration settings
+import { config } from './config.js';
+
 // Player's initial position and game state variables
-let playerX = 1000; // Player X position
-let playerY = 1175; // Player Y position
-let score = 0; // Player Score
-let lives = 4; // Player lives
-const playerSpeed = 7.5; // Player speed
-const playerBulletSpeed = 10; // Bullet speed
-let bulletcount = 250; // Bullet count
+let playerX = config.player.initialX; // Player X position
+let playerY = config.player.initialY; // Player Y position
+let score = config.game.initialScore; // Player Score
+let lives = config.game.initialLives; // Player lives
+const playerSpeed = config.player.speed; // Player speed
+const playerBulletSpeed = config.player.bulletSpeed; // Bullet speed
+let bulletcount = config.player.initialBulletCount; // Bullet count
 let timer = 0; // How long the game has been running
 
 const keys = {};
@@ -15,13 +18,13 @@ const bulletDrops = []; // Bullet drops array
 const suppliesDrop = []; // Supplies drop array
 
 let canSuppliesDrop = true; // Supplies drop control
-const suppliesDropCooldown = 20000; // Supplies drop cooldown in ms
+const suppliesDropCooldown = config.game.suppliesDropCooldown; // Supplies drop cooldown in ms
 let canShoot = true;
 let canMissileSpawn = true; // Missile spawn control
 let canBulletDrop = true; // Bullet drop control
-const bulletDropCooldown = 10000; // Bullet drop cooldown in ms
-const bulletCooldown = 250; // Bullet cooldown in ms
-const missileCooldown = 1500; // Missile cooldown in ms
+const bulletDropCooldown = config.game.bulletDropCooldown; // Bullet drop cooldown in ms
+const bulletCooldown = config.game.bulletCooldown; // Bullet cooldown in ms
+const missileCooldown = config.game.missileCooldown; // Missile cooldown in ms
 let gameOver = false; // Game over state
 
 // Function to choose a random number between min and max
