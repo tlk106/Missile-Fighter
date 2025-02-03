@@ -16,6 +16,7 @@ const bullets = []; // Bullets array
 const missiles = []; // Missiles array
 const bulletDrops = []; // Bullet drops array
 const suppliesDrop = []; // Supplies drop array
+const explosions = []; // Explosions array
 
 let canSuppliesDrop = true; // Supplies drop control
 const suppliesDropCooldown = config.game.suppliesDropCooldown; // Supplies drop cooldown in ms
@@ -26,6 +27,9 @@ const bulletDropCooldown = config.game.bulletDropCooldown; // Bullet drop cooldo
 const bulletCooldown = config.game.bulletCooldown; // Bullet cooldown in ms
 const missileCooldown = config.game.missileCooldown; // Missile cooldown in ms
 let gameOver = false; // Game over state
+
+// Sleep function
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Function to choose a random number between min and max
 const chooseRandomNumber = (min, max) => {
@@ -57,6 +61,7 @@ const checkCollisions = (objects1, objects2, collisionHandler) => {
 // Check collisions between bullets and missiles
 const handleBulletMissileCollision = (bullet, missile) => {
   score++; // Increment score
+  createExplosion(missile.x, missile.y); // Create explosion effect at missile's position
 };
 
 // Check collisions between bullets and bullet drops
@@ -68,6 +73,7 @@ const handleBulletBulletDropCollision = (bullet, drop) => {
   } else if (drop.cratetype === 3) {
     bulletcount += 85; // Increase bullet count for type 3
   }
+  createExplosion(drop.x, drop.y); // Create explosion effect at drop's position
 };
 
 // Check collisions between player and supplies drop
@@ -77,6 +83,18 @@ const handlePlayerSuppliesDropCollision = (player, drop) => {
   } else if (drop.createType === 2) {
     lives += 2; // Increase lives for type 2
   }
+  createExplosion(drop.x, drop.y); // Create explosion effect at drop's position
+};
+
+// Create explosion effect
+const createExplosion = (x, y) => {
+  const explosion = {
+    x: x,
+    y: y,
+    frame: 5,
+    type: chooseRandomNumber(1, 2), // Random explosion type
+  };
+  explosions.push(explosion);
 };
 
 // Create supplies drop
@@ -138,6 +156,17 @@ const createBulletDrop = () => {
   }, bulletDropCooldown);
 };
 
+// Update explosion effect
+const updateExplosions = () => {
+  for (let i = explosions.length - 1; i >= 0; i--) {
+    explosions[i].frame--;
+
+    if (explosions[i].frame <= 0) {
+      explosions.splice(i, 1);
+    }
+  }
+};
+
 // Update supplies drop positions
 const updateSuppliesDrop = () => {
   const canvas = document.getElementById("game-canvas");
@@ -196,6 +225,7 @@ const updateMissiles = () => {
     missiles[i].y += missiles[i].speed;
 
     if (missiles[i].y > canvas.height / scaleY) { // Adjust the condition to account for the scaled height
+      createExplosion(missiles[i].x, missiles[i].y); // Create explosion effect before removing the missile
       missiles.splice(i, 1);
       lives--; // Decrease lives
     }
@@ -278,6 +308,7 @@ const gameLoop = (currentTime) => {
     updateMissiles();
     updateBulletDrops();
     updateSuppliesDrop();
+    updateExplosions();
 
     // Check for collisions
     checkCollisions(bullets, missiles, handleBulletMissileCollision);
@@ -336,4 +367,6 @@ export {
   updateSuppliesDrop,
   timer,
   gameOver,
+  explosions,
+  updateExplosions
 };

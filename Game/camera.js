@@ -1,5 +1,4 @@
-// Import functions and variables from the game module
-import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives, bulletDrops, updateBulletDrops, suppliesDrop, updateSuppliesDrop } from './game.js';
+import { updatePlayerPosition, handleKeyPress, updateBullets, bullets, updateMissiles, missiles, lives, bulletDrops, updateBulletDrops, suppliesDrop, updateSuppliesDrop, explosions, updateExplosions } from './game.js';
 
 // Get the canvas element and its drawing context
 const canvas = document.getElementById("game-canvas");
@@ -28,6 +27,47 @@ const drawCircle = (x, y, radius, color) => {
 const drawImage = (img, x, y, width, height) => {
   ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
 };
+
+// Sleep function
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Load explosion images
+
+// Explosion 1 images
+
+const explosion1Image1 = new Image();
+explosion1Image1.src = 'Game/img/explosions/explosion1/explosion1-1.png';
+
+const explosion1Image2 = new Image();
+explosion1Image2.src = 'Game/img/explosions/explosion1/explosion1-2.png';
+
+const explosion1Image3 = new Image();
+explosion1Image3.src = 'Game/img/explosions/explosion1/explosion1-3.png';
+
+const explosion1Image4 = new Image();
+explosion1Image4.src = 'Game/img/explosions/explosion1/explosion1-4.png';
+
+const explosion1Image5 = new Image();
+explosion1Image5.src = 'Game/img/explosions/explosion1/explosion1-5.png';
+
+// Explosion 2 images
+
+const explosion2Image1 = new Image();
+explosion2Image1.src = 'Game/img/explosions/explosion2/explosion2-1.png';
+
+const explosion2Image2 = new Image();
+explosion2Image2.src = 'Game/img/explosions/explosion2/explosion2-2.png';
+
+const explosion2Image3 = new Image();
+explosion2Image3.src = 'Game/img/explosions/explosion2/explosion2-3.png';
+
+const explosion2Image4 = new Image();
+explosion2Image4.src = 'Game/img/explosions/explosion2/explosion2-4.png';
+
+
+const explosion2Image5 = new Image();
+explosion2Image5.src = 'Game/img/explosions/explosion2/explosion2-5.png';
+
 
 // Load the supplies drop image
 const suppliesDropImage1 = new Image();
@@ -81,6 +121,7 @@ backgroundImage.onload = () => {
     startGameLoop(bulletImage);
   };
 };
+
 
 // Render function to draw game elements
 const render = (bulletImage) => {
@@ -143,6 +184,56 @@ const render = (bulletImage) => {
       drawImage(suppliesDropImage1, drop.x, drop.y, 50, 50); // Draw supplies drop image type 1
     } else if (drop.createType === 2) {
       drawImage(suppliesDropImage2, drop.x, drop.y, 50, 50); // Draw supplies drop image type 2
+    }
+  });
+
+  // Draw explosions with different images based on type
+  explosions.forEach(explosion => {
+    if (explosion.type === 1) {
+      switch (explosion.frame) {
+        case 1:
+          drawImage(explosion1Image1, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 1
+          sleep(400);
+          break;
+        case 2:
+          drawImage(explosion1Image2, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 2
+          sleep(400);
+          break;
+        case 3:
+          drawImage(explosion1Image3, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 3
+          sleep(400);
+          break;
+        case 4:
+          drawImage(explosion1Image4, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 4
+          sleep(400);
+          break;
+        case 5:
+          drawImage(explosion1Image5, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 5
+          sleep(400);
+          break;
+        default:
+          break;
+      }
+    } else if (explosion.type === 2) {
+      switch (explosion.frame) {
+        case 1:
+          drawImage(explosion2Image1, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 1
+          break;
+        case 2:
+          drawImage(explosion2Image2, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 2
+          break;
+        case 3:
+          drawImage(explosion2Image3, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 3
+          break;
+        case 4:
+          drawImage(explosion2Image4, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 4
+          break;
+        case 5:
+          drawImage(explosion2Image5, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 5
+          break;
+        default:
+          break;
+      }
     }
   });
 
