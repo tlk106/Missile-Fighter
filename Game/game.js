@@ -158,8 +158,17 @@ const createBulletDrop = () => {
 
 // Update explosion effect
 const updateExplosions = () => {
+  const now = performance.now();
   for (let i = explosions.length - 1; i >= 0; i--) {
-    explosions[i].frame--;
+    if (!explosions[i].lastUpdate) {
+      explosions[i].lastUpdate = now;
+    }
+
+    const elapsed = now - explosions[i].lastUpdate;
+    if (elapsed >= 200) { // 200ms
+      explosions[i].frame--;
+      explosions[i].lastUpdate = now;
+    }
 
     if (explosions[i].frame <= 0) {
       explosions.splice(i, 1);

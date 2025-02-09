@@ -193,23 +193,18 @@ const render = (bulletImage) => {
       switch (explosion.frame) {
         case 1:
           drawImage(explosion1Image1, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 1
-          sleep(400);
           break;
         case 2:
           drawImage(explosion1Image2, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 2
-          sleep(400);
           break;
         case 3:
           drawImage(explosion1Image3, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 3
-          sleep(400);
           break;
         case 4:
           drawImage(explosion1Image4, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 4
-          sleep(400);
           break;
         case 5:
           drawImage(explosion1Image5, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 5
-          sleep(400);
           break;
         default:
           break;
