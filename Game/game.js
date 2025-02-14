@@ -165,7 +165,7 @@ const updateExplosions = () => {
     }
 
     const elapsed = now - explosions[i].lastUpdate;
-    if (elapsed >= 100) { // 100ms
+    if (elapsed >= 55) { // 55ms per frame
       explosions[i].frame--;
       explosions[i].lastUpdate = now;
     }

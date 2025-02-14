@@ -192,19 +192,19 @@ const render = (bulletImage) => {
     if (explosion.type === 1) {
       switch (explosion.frame) {
         case 5:
-          drawImage(explosion1Image1, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 1
+          drawImage(explosion1Image1, explosion.x, explosion.y, 150, 150); // Draw explosion image type 1 frame 1
           break;
         case 4:
-          drawImage(explosion1Image2, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 2
+          drawImage(explosion1Image2, explosion.x, explosion.y, 150, 150); // Draw explosion image type 1 frame 2
           break;
         case 3:
-          drawImage(explosion1Image3, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 3
+          drawImage(explosion1Image3, explosion.x, explosion.y, 150, 150); // Draw explosion image type 1 frame 3
           break;
         case 2:
-          drawImage(explosion1Image4, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 4
+          drawImage(explosion1Image4, explosion.x, explosion.y, 150, 150); // Draw explosion image type 1 frame 4
           break;
         case 1:
-          drawImage(explosion1Image5, explosion.x, explosion.y, 100, 100); // Draw explosion image type 1 frame 5
+          drawImage(explosion1Image5, explosion.x, explosion.y, 150, 150); // Draw explosion image type 1 frame 5
           break;
         default:
           break;
@@ -212,19 +212,19 @@ const render = (bulletImage) => {
     } else if (explosion.type === 2) {
       switch (explosion.frame) {
         case 5:
-          drawImage(explosion2Image1, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 1
+          drawImage(explosion2Image1, explosion.x, explosion.y, 150, 150); // Draw explosion image type 2 frame 1
           break;
         case 4:
-          drawImage(explosion2Image2, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 2
+          drawImage(explosion2Image2, explosion.x, explosion.y, 150, 150); // Draw explosion image type 2 frame 2
           break;
         case 3:
-          drawImage(explosion2Image3, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 3
+          drawImage(explosion2Image3, explosion.x, explosion.y, 150, 150); // Draw explosion image type 2 frame 3
           break;
         case 2:
-          drawImage(explosion2Image4, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 4
+          drawImage(explosion2Image4, explosion.x, explosion.y, 150, 150); // Draw explosion image type 2 frame 4
           break;
         case 1:
-          drawImage(explosion2Image5, explosion.x, explosion.y, 100, 100); // Draw explosion image type 2 frame 5
+          drawImage(explosion2Image5, explosion.x, explosion.y, 150, 150); // Draw explosion image type 2 frame 5
           break;
         default:
           break;
